@@ -1,0 +1,572 @@
+[
+  {
+    "id": 1,
+    "name": "الفاتحة",
+    "url": "https://files.catbox.moe/hpr2f2.mp3"
+  },
+  {
+    "id": 2,
+    "name": "البقرة",
+    "url": "https://files.catbox.moe/mp9uyw.mp3"
+  },
+  {
+    "id": 3,
+    "name": "آل عمران",
+    "url": "https://files.catbox.moe/62i643.mp3"
+  },
+  {
+    "id": 4,
+    "name": "النساء",
+    "url": "https://files.catbox.moe/ysno14.mp3"
+  },
+  {
+    "id": 5,
+    "name": "المائدة",
+    "url": "https://files.catbox.moe/ltgm4v.mp3"
+  },
+  {
+    "id": 6,
+    "name": "الأنعام",
+    "url": "https://files.catbox.moe/co9oyx.mp3"
+  },
+  {
+    "id": 7,
+    "name": "الأعراف",
+    "url": "https://files.catbox.moe/yi3gcb.mp3"
+  },
+  {
+    "id": 8,
+    "name": "الأنفال",
+    "url": "https://files.catbox.moe/d9a2dv.mp3"
+  },
+  {
+    "id": 9,
+    "name": "التوبة",
+    "url": "https://files.catbox.moe/63hljf.mp3"
+  },
+  {
+    "id": 10,
+    "name": "يونس",
+    "url": "https://files.catbox.moe/wqpcwf.mp3"
+  },
+  {
+    "id": 11,
+    "name": "هود",
+    "url": "https://files.catbox.moe/s35odk.mp3"
+  },
+  {
+    "id": 12,
+    "name": "يوسف",
+    "url": "https://files.catbox.moe/a5ydn8.mp3"
+  },
+  {
+    "id": 13,
+    "name": "الرعد",
+    "url": "https://files.catbox.moe/3qf84x.mp3"
+  },
+  {
+    "id": 14,
+    "name": "إبراهيم",
+    "url": "https://files.catbox.moe/0yu0ce.mp3"
+  },
+  {
+    "id": 15,
+    "name": "الحجر",
+    "url": "https://files.catbox.moe/dp4jxz.mp3"
+  },
+  {
+    "id": 16,
+    "name": "النحل",
+    "url": "https://files.catbox.moe/aztg1p.mp3"
+  },
+  {
+    "id": 17,
+    "name": "الإسراء",
+    "url": "https://files.catbox.moe/d30jbu.mp3"
+  },
+  {
+    "id": 18,
+    "name": "الكهف",
+    "url": "https://files.catbox.moe/oy9vet.mp3"
+  },
+  {
+    "id": 19,
+    "name": "مريم",
+    "url": "https://files.catbox.moe/78xw55.mp3"
+  },
+  {
+    "id": 20,
+    "name": "طه",
+    "url": "https://files.catbox.moe/ft8ak5.mp3"
+  },
+  {
+    "id": 21,
+    "name": "الأنبياء",
+    "url": "https://files.catbox.moe/keb11x.mp3"
+  },
+  {
+    "id": 22,
+    "name": "الحج",
+    "url": "https://files.catbox.moe/9ck2ci.mp3"
+  },
+  {
+    "id": 23,
+    "name": "المؤمنون",
+    "url": "https://files.catbox.moe/b4yzeh.mp3"
+  },
+  {
+    "id": 24,
+    "name": "النور",
+    "url": "https://files.catbox.moe/8g46mp.mp3"
+  },
+  {
+    "id": 25,
+    "name": "الفرقان",
+    "url": "https://files.catbox.moe/e53yla.mp3"
+  },
+  {
+    "id": 26,
+    "name": "الشعراء",
+    "url": "https://files.catbox.moe/vkb0nj.mp3"
+  },
+  {
+    "id": 27,
+    "name": "النمل",
+    "url": "https://files.catbox.moe/5qsouj.mp3"
+  },
+  {
+    "id": 28,
+    "name": "القصص",
+    "url": "https://files.catbox.moe/47gv02.mp3"
+  },
+  {
+    "id": 29,
+    "name": "العنكبوت",
+    "url": "https://files.catbox.moe/dkc580.mp3"
+  },
+  {
+    "id": 30,
+    "name": "الروم",
+    "url": "https://files.catbox.moe/zkqqi0.mp3"
+  },
+  {
+    "id": 31,
+    "name": "لقمان",
+    "url": "https://files.catbox.moe/az3g19.mp3"
+  },
+  {
+    "id": 32,
+    "name": "السجدة",
+    "url": "https://files.catbox.moe/e7r40d.mp3"
+  },
+  {
+    "id": 33,
+    "name": "الأحزاب",
+    "url": "https://files.catbox.moe/kxa4dy.mp3"
+  },
+  {
+    "id": 34,
+    "name": "سبأ",
+    "url": "https://files.catbox.moe/c2z6k0.mp3"
+  },
+  {
+    "id": 35,
+    "name": "فاطر",
+    "url": "https://files.catbox.moe/d69cp7.mp3"
+  },
+  {
+    "id": 36,
+    "name": "يس",
+    "url": "https://files.catbox.moe/jf0kz9.mp3"
+  },
+  {
+    "id": 37,
+    "name": "الصافات",
+    "url": "https://files.catbox.moe/ytceoc.mp3"
+  },
+  {
+    "id": 38,
+    "name": "ص",
+    "url": "https://files.catbox.moe/23sq5n.mp3"
+  },
+  {
+    "id": 39,
+    "name": "الزمر",
+    "url": "https://files.catbox.moe/bw6cvv.mp3"
+  },
+  {
+    "id": 40,
+    "name": "غافر",
+    "url": "https://files.catbox.moe/d2ilih.mp3"
+  },
+  {
+    "id": 41,
+    "name": "فصلت",
+    "url": "https://files.catbox.moe/wn56a1.mp3"
+  },
+  {
+    "id": 42,
+    "name": "الشورى",
+    "url": "https://files.catbox.moe/4j9st8.mp3"
+  },
+  {
+    "id": 43,
+    "name": "الزخرف",
+    "url": "https://files.catbox.moe/khxvzn.mp3"
+  },
+  {
+    "id": 44,
+    "name": "الدخان",
+    "url": "https://files.catbox.moe/kq6lto.mp3"
+  },
+  {
+    "id": 45,
+    "name": "الجاثية",
+    "url": "https://files.catbox.moe/24vv8c.mp3"
+  },
+  {
+    "id": 46,
+    "name": "الأحقاف",
+    "url": "https://files.catbox.moe/leo88m.mp3"
+  },
+  {
+    "id": 47,
+    "name": "محمد",
+    "url": "https://files.catbox.moe/c1zwvy.mp3"
+  },
+  {
+    "id": 48,
+    "name": "الفتح",
+    "url": "https://files.catbox.moe/2x4tw8.mp3"
+  },
+  {
+    "id": 49,
+    "name": "الحجرات",
+    "url": "https://files.catbox.moe/39jyk5.mp3"
+  },
+  {
+    "id": 50,
+    "name": "ق",
+    "url": "https://files.catbox.moe/9r2kyr.mp3"
+  },
+  {
+    "id": 51,
+    "name": "الذاريات",
+    "url": "https://files.catbox.moe/ki6gp5.mp3"
+  },
+  {
+    "id": 52,
+    "name": "الطور",
+    "url": "https://files.catbox.moe/3tykdc.mp3"
+  },
+  {
+    "id": 53,
+    "name": "النجم",
+    "url": "https://files.catbox.moe/dds556.mp3"
+  },
+  {
+    "id": 54,
+    "name": "القمر",
+    "url": "https://files.catbox.moe/hdgrmr.mp3"
+  },
+  {
+    "id": 55,
+    "name": "الرحمن",
+    "url": "https://files.catbox.moe/qar5bk.mp3"
+  },
+  {
+    "id": 56,
+    "name": "الواقعة",
+    "url": "https://files.catbox.moe/e1dl14.mp3"
+  },
+  {
+    "id": 57,
+    "name": "الحديد",
+    "url": "https://files.catbox.moe/zeat2f.mp3"
+  },
+  {
+    "id": 58,
+    "name": "المجادلة",
+    "url": "https://files.catbox.moe/2elcv6.mp3"
+  },
+  {
+    "id": 59,
+    "name": "الحشر",
+    "url": "https://files.catbox.moe/cfm6dm.mp3"
+  },
+  {
+    "id": 60,
+    "name": "الممتحنة",
+    "url": "https://files.catbox.moe/2o6o9y.mp3"
+  },
+  {
+    "id": 61,
+    "name": "الصف",
+    "url": "https://files.catbox.moe/rvo7ri.mp3"
+  },
+  {
+    "id": 62,
+    "name": "الجمعة",
+    "url": "https://files.catbox.moe/g0uaao.mp3"
+  },
+  {
+    "id": 63,
+    "name": "المنافقون",
+    "url": "https://files.catbox.moe/0cbhw6.mp3"
+  },
+  {
+    "id": 64,
+    "name": "التغابن",
+    "url": "https://files.catbox.moe/t20gh5.mp3"
+  },
+  {
+    "id": 65,
+    "name": "الطلاق",
+    "url": "https://files.catbox.moe/52g0ux.mp3"
+  },
+  {
+    "id": 66,
+    "name": "التحريم",
+    "url": "https://files.catbox.moe/5av3u7.mp3"
+  },
+  {
+    "id": 67,
+    "name": "الملك",
+    "url": "https://files.catbox.moe/ade1p7.mp3"
+  },
+  {
+    "id": 68,
+    "name": "القلم",
+    "url": "https://files.catbox.moe/07gdre.mp3"
+  },
+  {
+    "id": 69,
+    "name": "الحاقة",
+    "url": "https://files.catbox.moe/21zdqx.mp3"
+  },
+  {
+    "id": 70,
+    "name": "المعارج",
+    "url": "https://files.catbox.moe/1x60dt.mp3"
+  },
+  {
+    "id": 71,
+    "name": "نوح",
+    "url": "https://files.catbox.moe/jutxbv.mp3"
+  },
+  {
+    "id": 72,
+    "name": "الجن",
+    "url": "https://files.catbox.moe/187k0t.mp3"
+  },
+  {
+    "id": 73,
+    "name": "المزمل",
+    "url": "https://files.catbox.moe/gb1f65.mp3"
+  },
+  {
+    "id": 74,
+    "name": "المدثر",
+    "url": "https://files.catbox.moe/qybwrj.mp3"
+  },
+  {
+    "id": 75,
+    "name": "القيامة",
+    "url": "https://files.catbox.moe/a4bksr.mp3"
+  },
+  {
+    "id": 76,
+    "name": "الإنسان",
+    "url": "https://files.catbox.moe/8ds0wr.mp3"
+  },
+  {
+    "id": 77,
+    "name": "المرسلات",
+    "url": "https://files.catbox.moe/1k5xlo.mp3"
+  },
+  {
+    "id": 78,
+    "name": "النبأ",
+    "url": "https://files.catbox.moe/uq56pn.mp3"
+  },
+  {
+    "id": 79,
+    "name": "النازعات",
+    "url": "https://files.catbox.moe/hb9rrz.mp3"
+  },
+  {
+    "id": 80,
+    "name": "عبس",
+    "url": "https://files.catbox.moe/djks9b.mp3"
+  },
+  {
+    "id": 81,
+    "name": "التكوير",
+    "url": "https://files.catbox.moe/9xmnaf.mp3"
+  },
+  {
+    "id": 82,
+    "name": "الانفطار",
+    "url": "https://files.catbox.moe/52zhg4.mp3"
+  },
+  {
+    "id": 83,
+    "name": "المطففين",
+    "url": "https://files.catbox.moe/7mu3xr.mp3"
+  },
+  {
+    "id": 84,
+    "name": "الانشقاق",
+    "url": "https://files.catbox.moe/nchdkf.mp3"
+  },
+  {
+    "id": 85,
+    "name": "البروج",
+    "url": "https://files.catbox.moe/cc7zq2.mp3"
+  },
+  {
+    "id": 86,
+    "name": "الطارق",
+    "url": "https://files.catbox.moe/m90o50.mp3"
+  },
+  {
+    "id": 87,
+    "name": "الأعلى",
+    "url": "https://files.catbox.moe/0l2to6.mp3"
+  },
+  {
+    "id": 88,
+    "name": "الغاشية",
+    "url": "https://files.catbox.moe/u4wrev.mp3"
+  },
+  {
+    "id": 89,
+    "name": "الفجر",
+    "url": "https://files.catbox.moe/66n01b.mp3"
+  },
+  {
+    "id": 90,
+    "name": "البلد",
+    "url": "https://files.catbox.moe/htgnf5.mp3"
+  },
+  {
+    "id": 91,
+    "name": "الشمس",
+    "url": "https://files.catbox.moe/lqb62n.mp3"
+  },
+  {
+    "id": 92,
+    "name": "الليل",
+    "url": "https://files.catbox.moe/78df13.mp3"
+  },
+  {
+    "id": 93,
+    "name": "الضحى",
+    "url": "https://files.catbox.moe/oxtghe.mp3"
+  },
+  {
+    "id": 94,
+    "name": "الشرح",
+    "url": "https://files.catbox.moe/oeyzac.mp3"
+  },
+  {
+    "id": 95,
+    "name": "التين",
+    "url": "https://files.catbox.moe/5epuv2.mp3"
+  },
+  {
+    "id": 96,
+    "name": "العلق",
+    "url": "https://files.catbox.moe/1y9y21.mp3"
+  },
+  {
+    "id": 97,
+    "name": "القدر",
+    "url": "https://files.catbox.moe/1jvjko.mp3"
+  },
+  {
+    "id": 98,
+    "name": "البينة",
+    "url": "https://files.catbox.moe/a9hafe.mp3"
+  },
+  {
+    "id": 99,
+    "name": "الزلزلة",
+    "url": "https://files.catbox.moe/1mqu3e.mp3"
+  },
+  {
+    "id": 100,
+    "name": "العاديات",
+    "url": "https://files.catbox.moe/4hrzn0.mp3"
+  },
+  {
+    "id": 101,
+    "name": "القارعة",
+    "url": "https://files.catbox.moe/sht62n.mp3"
+  },
+  {
+    "id": 102,
+    "name": "التكاثر",
+    "url": "https://files.catbox.moe/p3jmfz.mp3"
+  },
+  {
+    "id": 103,
+    "name": "العصر",
+    "url": "https://files.catbox.moe/ls37r9.mp3"
+  },
+  {
+    "id": 104,
+    "name": "الهمزة",
+    "url": "https://files.catbox.moe/ickwp0.mp3"
+  },
+  {
+    "id": 105,
+    "name": "الفيل",
+    "url": "https://files.catbox.moe/yzrmtk.mp3"
+  },
+  {
+    "id": 106,
+    "name": "قريش",
+    "url": "https://files.catbox.moe/g0196z.mp3"
+  },
+  {
+    "id": 107,
+    "name": "الماعون",
+    "url": "https://files.catbox.moe/6hrdjx.mp3"
+  },
+  {
+    "id": 108,
+    "name": "الكوثر",
+    "url": "https://files.catbox.moe/c4iqb4.mp3"
+  },
+  {
+    "id": 109,
+    "name": "الكافرون",
+    "url": "https://files.catbox.moe/kazc8z.mp3"
+  },
+  {
+    "id": 110,
+    "name": "النصر",
+    "url": "https://files.catbox.moe/azr2tb.mp3"
+  },
+  {
+    "id": 111,
+    "name": "المسد",
+    "url": "https://files.catbox.moe/aik4o4.mp3"
+  },
+  {
+    "id": 112,
+    "name": "الإخلاص",
+    "url": "https://files.catbox.moe/rfzf0d.mp3"
+  },
+  {
+    "id": 113,
+    "name": "الفلق",
+    "url": "https://files.catbox.moe/hwo2a6.mp3"
+  },
+  {
+    "id": 114,
+    "name": "الناس",
+    "url": "https://files.catbox.moe/ig1o6v.mp3"
+  }
+]
