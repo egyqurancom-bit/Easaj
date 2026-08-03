@@ -1,0 +1,1380 @@
+<!DOCTYPE html>
+<html class="light" lang="ar" dir="rtl">
+<head>
+    <script>
+        (function () {
+            try {
+                if (localStorage.getItem('wartel_theme') === 'dark') {
+                    document.documentElement.classList.add('dark');
+                }
+            } catch (e) {}
+        })();
+    </script>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title id="page-title">ورتّـل - تطبيق استماع للقرآن</title>
+    <!-- تسريع الاتصال بسيرفرات جوجل للخطوط -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- تغيير display=swap إلى display=block لإخفاء النص حتى يكتمل تحميل الأيقونة -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;600&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap" rel="stylesheet"/>
+    <style>
+        /* خط الأيقونات محمّل محليًا من فولدر fonts بجوار index13.html، بدل تحميله من جوجل في كل مرة */
+        @font-face {
+            font-family: 'Material Symbols Outlined';
+            font-style: normal;
+            font-weight: 100 700;
+            font-display: swap;
+            src: url('fonts/material-symbols-outlined.woff2') format('woff2');
+        }
+    </style>
+    <script>
+        // إظهار الأيقونات فقط بعد التأكد من تحميل خط الأيقونات فعليًا (يمنع ظهور نص مقصوص مثل "Fa" مكان الأيقونة)
+        (function () {
+            var reveal = function () { document.documentElement.classList.add('fonts-ready'); };
+            if ('fonts' in document) {
+                document.fonts.load('24px "Material Symbols Outlined"').then(reveal).catch(reveal);
+            } else {
+                reveal();
+            }
+            // ضمان: مهما حصل، الأيقونات تظهر بعد ثانيتين كحد أقصى حتى لو تأخر الاتصال
+            setTimeout(reveal, 2000);
+        })();
+    </script>
+    <style id="tailwind-build">*,:after,:before{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgba(59,130,246,.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgba(59,130,246,.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/*! tailwindcss v3.4.19 | MIT License | https://tailwindcss.com*/*,:after,:before{box-sizing:border-box;border:0 solid #e5e7eb}:after,:before{--tw-content:""}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;-o-tab-size:4;tab-size:4;font-family:ui-sans-serif,system-ui,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0}fieldset,legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::-moz-placeholder,textarea::-moz-placeholder{opacity:1;color:#9ca3af}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.container{width:100%}@media (min-width:640px){.container{max-width:640px}}@media (min-width:768px){.container{max-width:768px}}@media (min-width:1024px){.container{max-width:1024px}}@media (min-width:1280px){.container{max-width:1280px}}@media (min-width:1536px){.container{max-width:1536px}}.pointer-events-none{pointer-events:none}.fixed{position:fixed}.absolute{position:absolute}.relative{position:relative}.inset-0{inset:0}.inset-4{inset:1rem}.inset-x-4{left:1rem;right:1rem}.bottom-4{bottom:1rem}.top-0{top:0}.top-1{top:.25rem}.top-1\/2{top:50%}.z-10{z-index:10}.z-50{z-index:50}.z-\[200\]{z-index:200}.mx-auto{margin-left:auto;margin-right:auto}.-ms-2{margin-inline-start:-.5rem}.-mt-2{margin-top:-.5rem}.mb-1{margin-bottom:.25rem}.mb-2{margin-bottom:.5rem}.mb-4{margin-bottom:1rem}.mb-6{margin-bottom:1.5rem}.mb-8{margin-bottom:2rem}.mt-1{margin-top:.25rem}.mt-2{margin-top:.5rem}.mt-20{margin-top:5rem}.mt-4{margin-top:1rem}.mt-6{margin-top:1.5rem}.line-clamp-2{overflow:hidden;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2}.block{display:block}.flex{display:flex}.table{display:table}.hidden{display:none}.aspect-square{aspect-ratio:1/1}.h-1{height:.25rem}.h-10{height:2.5rem}.h-12{height:3rem}.h-14{height:3.5rem}.h-16{height:4rem}.h-2{height:.5rem}.h-20{height:5rem}.h-24{height:6rem}.h-4{height:1rem}.h-48{height:12rem}.h-6{height:1.5rem}.h-8{height:2rem}.h-\[100dvh\]{height:100dvh}.h-\[80\%\]{height:80%}.h-full{height:100%}.min-h-0{min-height:0}.min-h-screen{min-height:100vh}.w-1{width:.25rem}.w-10{width:2.5rem}.w-12{width:3rem}.w-14{width:3.5rem}.w-20{width:5rem}.w-24{width:6rem}.w-4{width:1rem}.w-6{width:1.5rem}.w-8{width:2rem}.w-\[0\%\]{width:0}.w-\[60vw\]{width:60vw}.w-\[80\%\]{width:80%}.w-full{width:100%}.min-w-\[64px\]{min-width:64px}.max-w-\[280px\]{max-width:280px}.max-w-\[420px\]{max-width:420px}.max-w-\[720px\]{max-width:720px}.max-w-sm{max-width:24rem}.flex-1{flex:1 1 0%}.shrink-0{flex-shrink:0}.-translate-y-1{--tw-translate-y:-0.25rem}.-translate-y-1,.-translate-y-1\/2{transform:translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.-translate-y-1\/2{--tw-translate-y:-50%}.translate-x-0{--tw-translate-x:0px}.transform,.translate-x-0{transform:translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}@keyframes spin{to{transform:rotate(1turn)}}.animate-spin{animation:spin 1s linear infinite}.cursor-grab{cursor:grab}.cursor-pointer{cursor:pointer}.touch-none{touch-action:none}.flex-row-reverse{flex-direction:row-reverse}.flex-col{flex-direction:column}.items-end{align-items:flex-end}.items-center{align-items:center}.justify-end{justify-content:flex-end}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.justify-around{justify-content:space-around}.gap-0{gap:0}.gap-0\.5{gap:.125rem}.gap-1{gap:.25rem}.gap-1\.5{gap:.375rem}.gap-2{gap:.5rem}.gap-3{gap:.75rem}.gap-4{gap:1rem}.space-y-1>:not([hidden])~:not([hidden]){--tw-space-y-reverse:0;margin-top:calc(.25rem*(1 - var(--tw-space-y-reverse)));margin-bottom:calc(.25rem*var(--tw-space-y-reverse))}.space-y-10>:not([hidden])~:not([hidden]){--tw-space-y-reverse:0;margin-top:calc(2.5rem*(1 - var(--tw-space-y-reverse)));margin-bottom:calc(2.5rem*var(--tw-space-y-reverse))}.space-y-2>:not([hidden])~:not([hidden]){--tw-space-y-reverse:0;margin-top:calc(.5rem*(1 - var(--tw-space-y-reverse)));margin-bottom:calc(.5rem*var(--tw-space-y-reverse))}.space-y-3>:not([hidden])~:not([hidden]){--tw-space-y-reverse:0;margin-top:calc(.75rem*(1 - var(--tw-space-y-reverse)));margin-bottom:calc(.75rem*var(--tw-space-y-reverse))}.space-y-4>:not([hidden])~:not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1rem*(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1rem*var(--tw-space-y-reverse))}.space-y-6>:not([hidden])~:not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1.5rem*(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1.5rem*var(--tw-space-y-reverse))}.overflow-hidden{overflow:hidden}.rounded{border-radius:.25rem}.rounded-2xl{border-radius:1rem}.rounded-\[26px\]{border-radius:26px}.rounded-full{border-radius:9999px}.rounded-lg{border-radius:.5rem}.rounded-xl{border-radius:.75rem}.border{border-width:1px}.border-2{border-width:2px}.border-\[3px\]{border-width:3px}.border-emerald-400{--tw-border-opacity:1;border-color:rgb(52 211 153/var(--tw-border-opacity,1))}.border-outline-variant{--tw-border-opacity:1;border-color:rgb(191 201 195/var(--tw-border-opacity,1))}.border-outline-variant\/20{border-color:hsla(144,8%,77%,.2)}.border-outline-variant\/40{border-color:hsla(144,8%,77%,.4)}.border-slate-700{--tw-border-opacity:1;border-color:rgb(51 65 85/var(--tw-border-opacity,1))}.border-surface-container{--tw-border-opacity:1;border-color:rgb(237 238 239/var(--tw-border-opacity,1))}.border-surface-container-lowest,.border-white{--tw-border-opacity:1;border-color:rgb(255 255 255/var(--tw-border-opacity,1))}.border-white\/30{border-color:hsla(0,0%,100%,.3)}.border-t-primary{--tw-border-opacity:1;border-top-color:rgb(0 53 39/var(--tw-border-opacity,1))}.border-t-white{--tw-border-opacity:1;border-top-color:rgb(255 255 255/var(--tw-border-opacity,1))}.bg-black{--tw-bg-opacity:1;background-color:rgb(0 0 0/var(--tw-bg-opacity,1))}.bg-black\/50{background-color:rgba(0,0,0,.5)}.bg-emerald-400{--tw-bg-opacity:1;background-color:rgb(52 211 153/var(--tw-bg-opacity,1))}.bg-outline{--tw-bg-opacity:1;background-color:rgb(112 121 116/var(--tw-bg-opacity,1))}.bg-outline-variant{--tw-bg-opacity:1;background-color:rgb(191 201 195/var(--tw-bg-opacity,1))}.bg-primary{--tw-bg-opacity:1;background-color:rgb(0 53 39/var(--tw-bg-opacity,1))}.bg-primary-container{--tw-bg-opacity:1;background-color:rgb(6 78 59/var(--tw-bg-opacity,1))}.bg-primary-container\/10{background-color:rgba(6,78,59,.1)}.bg-primary-container\/5{background-color:rgba(6,78,59,.05)}.bg-primary\/10{background-color:rgba(0,53,39,.1)}.bg-secondary-container{--tw-bg-opacity:1;background-color:rgb(254 147 44/var(--tw-bg-opacity,1))}.bg-surface{--tw-bg-opacity:1;background-color:rgb(248 249 250/var(--tw-bg-opacity,1))}.bg-surface-container-lowest{--tw-bg-opacity:1;background-color:rgb(255 255 255/var(--tw-bg-opacity,1))}.bg-surface-container-lowest\/95{background-color:hsla(0,0%,100%,.95)}.bg-surface\/80{background-color:rgba(248,249,250,.8)}.bg-white{--tw-bg-opacity:1;background-color:rgb(255 255 255/var(--tw-bg-opacity,1))}.bg-gradient-to-t{background-image:linear-gradient(to top,var(--tw-gradient-stops))}.from-primary{--tw-gradient-from:#003527 var(--tw-gradient-from-position);--tw-gradient-to:rgba(0,53,39,0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from),var(--tw-gradient-to)}.from-primary\/80{--tw-gradient-from:rgba(0,53,39,.8) var(--tw-gradient-from-position);--tw-gradient-to:rgba(0,53,39,0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from),var(--tw-gradient-to)}.from-slate-900{--tw-gradient-from:#0f172a var(--tw-gradient-from-position);--tw-gradient-to:rgba(15,23,42,0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from),var(--tw-gradient-to)}.to-transparent{--tw-gradient-to:transparent var(--tw-gradient-to-position)}.bg-cover{background-size:cover}.bg-center{background-position:50%}.object-cover{-o-object-fit:cover;object-fit:cover}.p-1{padding:.25rem}.p-2{padding:.5rem}.p-3{padding:.75rem}.p-4{padding:1rem}.p-6{padding:1.5rem}.px-2{padding-left:.5rem;padding-right:.5rem}.px-4{padding-left:1rem;padding-right:1rem}.px-5{padding-left:1.25rem;padding-right:1.25rem}.px-6{padding-left:1.5rem;padding-right:1.5rem}.py-1{padding-top:.25rem;padding-bottom:.25rem}.py-1\.5{padding-top:.375rem;padding-bottom:.375rem}.py-10{padding-top:2.5rem;padding-bottom:2.5rem}.py-14{padding-top:3.5rem;padding-bottom:3.5rem}.py-2{padding-top:.5rem;padding-bottom:.5rem}.py-3{padding-top:.75rem;padding-bottom:.75rem}.pb-10{padding-bottom:2.5rem}.pb-24{padding-bottom:6rem}.pb-\[110px\]{padding-bottom:110px}.pb-\[140px\]{padding-bottom:140px}.pt-2{padding-top:.5rem}.pt-20{padding-top:5rem}.pt-4{padding-top:1rem}.pt-\[100px\]{padding-top:100px}.pt-\[88px\]{padding-top:88px}.text-left{text-align:left}.text-center{text-align:center}.text-right{text-align:right}.text-start{text-align:start}.font-body-lg{font-family:Plus Jakarta Sans,sans-serif}.font-display-quran,.font-headline-md{font-family:Noto Serif,sans-serif}.text-2xl{font-size:1.5rem;line-height:2rem}.text-3xl{font-size:1.875rem;line-height:2.25rem}.text-4xl{font-size:2.25rem;line-height:2.5rem}.text-6xl{font-size:3.75rem;line-height:1}.text-\[10px\]{font-size:10px}.text-\[22px\]{font-size:22px}.text-\[32px\]{font-size:32px}.text-\[40px\]{font-size:40px}.text-base{font-size:1rem;line-height:1.5rem}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-sm{font-size:.875rem;line-height:1.25rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-xs{font-size:.75rem;line-height:1rem}.font-bold{font-weight:700}.uppercase{text-transform:uppercase}.leading-none{line-height:1}.tracking-tight{letter-spacing:-.025em}.tracking-wider{letter-spacing:.05em}.text-gray-400{--tw-text-opacity:1;color:rgb(156 163 175/var(--tw-text-opacity,1))}.text-gray-500{--tw-text-opacity:1;color:rgb(107 114 128/var(--tw-text-opacity,1))}.text-on-secondary-container{--tw-text-opacity:1;color:rgb(74 40 0/var(--tw-text-opacity,1))}.text-on-surface{--tw-text-opacity:1;color:rgb(25 28 29/var(--tw-text-opacity,1))}.text-on-surface-variant{--tw-text-opacity:1;color:rgb(64 73 68/var(--tw-text-opacity,1))}.text-primary{--tw-text-opacity:1;color:rgb(0 53 39/var(--tw-text-opacity,1))}.text-red-400{--tw-text-opacity:1;color:rgb(248 113 113/var(--tw-text-opacity,1))}.text-red-500{--tw-text-opacity:1;color:rgb(239 68 68/var(--tw-text-opacity,1))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255/var(--tw-text-opacity,1))}.opacity-0{opacity:0}.shadow-\[0_10px_35px_-6px_rgba\(0\2c 53\2c 39\2c 0\.28\)\]{--tw-shadow:0 10px 35px -6px rgba(0,53,39,.28);--tw-shadow-colored:0 10px 35px -6px var(--tw-shadow-color)}.shadow-\[0_10px_35px_-6px_rgba\(0\2c 53\2c 39\2c 0\.28\)\],.shadow-lg{box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)}.shadow-lg{--tw-shadow:0 10px 15px -3px rgba(0,0,0,.1),0 4px 6px -4px rgba(0,0,0,.1);--tw-shadow-colored:0 10px 15px -3px var(--tw-shadow-color),0 4px 6px -4px var(--tw-shadow-color)}.shadow-md{--tw-shadow:0 4px 6px -1px rgba(0,0,0,.1),0 2px 4px -2px rgba(0,0,0,.1);--tw-shadow-colored:0 4px 6px -1px var(--tw-shadow-color),0 2px 4px -2px var(--tw-shadow-color)}.shadow-md,.shadow-sm{box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)}.shadow-sm{--tw-shadow:0 1px 2px 0 rgba(0,0,0,.05);--tw-shadow-colored:0 1px 2px 0 var(--tw-shadow-color)}.shadow-xl{--tw-shadow:0 20px 25px -5px rgba(0,0,0,.1),0 8px 10px -6px rgba(0,0,0,.1);--tw-shadow-colored:0 20px 25px -5px var(--tw-shadow-color),0 8px 10px -6px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)}.outline{outline-style:solid}.ring-emerald-400{--tw-ring-opacity:1;--tw-ring-color:rgb(52 211 153/var(--tw-ring-opacity,1))}.ring-primary{--tw-ring-opacity:1;--tw-ring-color:rgb(0 53 39/var(--tw-ring-opacity,1))}.blur{--tw-blur:blur(8px)}.blur,.filter{filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}.backdrop-blur-2xl{--tw-backdrop-blur:blur(40px)}.backdrop-blur-2xl,.backdrop-blur-sm{-webkit-backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)}.backdrop-blur-sm{--tw-backdrop-blur:blur(4px)}.backdrop-blur-xl{--tw-backdrop-blur:blur(24px)}.backdrop-blur-xl,.backdrop-filter{-webkit-backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)}.transition{transition-property:color,background-color,border-color,text-decoration-color,fill,stroke,opacity,box-shadow,transform,filter,-webkit-backdrop-filter;transition-property:color,background-color,border-color,text-decoration-color,fill,stroke,opacity,box-shadow,transform,filter,backdrop-filter;transition-property:color,background-color,border-color,text-decoration-color,fill,stroke,opacity,box-shadow,transform,filter,backdrop-filter,-webkit-backdrop-filter;transition-timing-function:cubic-bezier(.4,0,.2,1);transition-duration:.15s}.transition-all{transition-property:all;transition-timing-function:cubic-bezier(.4,0,.2,1);transition-duration:.15s}.transition-colors{transition-property:color,background-color,border-color,text-decoration-color,fill,stroke;transition-timing-function:cubic-bezier(.4,0,.2,1);transition-duration:.15s}.transition-transform{transition-property:transform;transition-timing-function:cubic-bezier(.4,0,.2,1);transition-duration:.15s}.duration-200{transition-duration:.2s}.duration-300{transition-duration:.3s}.hover\:scale-105:hover{--tw-scale-x:1.05;--tw-scale-y:1.05;transform:translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.hover\:bg-primary-container:hover{--tw-bg-opacity:1;background-color:rgb(6 78 59/var(--tw-bg-opacity,1))}.hover\:bg-primary\/10:hover{background-color:rgba(0,53,39,.1)}.hover\:bg-surface-container:hover{--tw-bg-opacity:1;background-color:rgb(237 238 239/var(--tw-bg-opacity,1))}.hover\:text-primary:hover{--tw-text-opacity:1;color:rgb(0 53 39/var(--tw-text-opacity,1))}.hover\:underline:hover{text-decoration-line:underline}.hover\:opacity-90:hover{opacity:.9}.focus\:outline-none:focus{outline:2px solid transparent;outline-offset:2px}.focus\:ring-2:focus{--tw-ring-offset-shadow:var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);--tw-ring-shadow:var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);box-shadow:var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow,0 0 #0000)}.focus\:ring-primary\/20:focus{--tw-ring-color:rgba(0,53,39,.2)}.active\:scale-90:active{--tw-scale-x:.9;--tw-scale-y:.9}.active\:scale-90:active,.active\:scale-95:active{transform:translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.active\:scale-95:active{--tw-scale-x:.95;--tw-scale-y:.95}.active\:cursor-grabbing:active{cursor:grabbing}.dark\:border-emerald-400\/20:is(.dark *){border-color:rgba(52,211,153,.2)}.dark\:border-emerald-400\/30:is(.dark *){border-color:rgba(52,211,153,.3)}.dark\:border-emerald-400\/50:is(.dark *){border-color:rgba(52,211,153,.5)}.dark\:border-slate-600:is(.dark *){--tw-border-opacity:1;border-color:rgb(71 85 105/var(--tw-border-opacity,1))}.dark\:border-slate-700:is(.dark *){--tw-border-opacity:1;border-color:rgb(51 65 85/var(--tw-border-opacity,1))}.dark\:border-slate-700\/60:is(.dark *){border-color:rgba(51,65,85,.6)}.dark\:border-slate-800:is(.dark *){--tw-border-opacity:1;border-color:rgb(30 41 59/var(--tw-border-opacity,1))}.dark\:border-slate-900:is(.dark *){--tw-border-opacity:1;border-color:rgb(15 23 42/var(--tw-border-opacity,1))}.dark\:border-slate-900\/30:is(.dark *){border-color:rgba(15,23,42,.3)}.dark\:border-t-emerald-400:is(.dark *){--tw-border-opacity:1;border-top-color:rgb(52 211 153/var(--tw-border-opacity,1))}.dark\:border-t-slate-900:is(.dark *){--tw-border-opacity:1;border-top-color:rgb(15 23 42/var(--tw-border-opacity,1))}.dark\:bg-\[\#0f1115\]:is(.dark *){--tw-bg-opacity:1;background-color:rgb(15 17 21/var(--tw-bg-opacity,1))}.dark\:bg-\[\#0f1115\]\/80:is(.dark *){background-color:rgba(15,17,21,.8)}.dark\:bg-\[\#1a1d1d\]\/95:is(.dark *){background-color:rgba(26,29,29,.95)}.dark\:bg-emerald-400:is(.dark *){--tw-bg-opacity:1;background-color:rgb(52 211 153/var(--tw-bg-opacity,1))}.dark\:bg-emerald-400\/20:is(.dark *){background-color:rgba(52,211,153,.2)}.dark\:bg-emerald-500:is(.dark *){--tw-bg-opacity:1;background-color:rgb(16 185 129/var(--tw-bg-opacity,1))}.dark\:bg-slate-500:is(.dark *){--tw-bg-opacity:1;background-color:rgb(100 116 139/var(--tw-bg-opacity,1))}.dark\:bg-slate-600:is(.dark *){--tw-bg-opacity:1;background-color:rgb(71 85 105/var(--tw-bg-opacity,1))}.dark\:bg-slate-700:is(.dark *){--tw-bg-opacity:1;background-color:rgb(51 65 85/var(--tw-bg-opacity,1))}.dark\:bg-slate-800:is(.dark *){--tw-bg-opacity:1;background-color:rgb(30 41 59/var(--tw-bg-opacity,1))}.dark\:bg-white:is(.dark *){--tw-bg-opacity:1;background-color:rgb(255 255 255/var(--tw-bg-opacity,1))}.dark\:from-slate-900\/90:is(.dark *){--tw-gradient-from:rgba(15,23,42,.9) var(--tw-gradient-from-position);--tw-gradient-to:rgba(15,23,42,0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from),var(--tw-gradient-to)}.dark\:text-emerald-400:is(.dark *){--tw-text-opacity:1;color:rgb(52 211 153/var(--tw-text-opacity,1))}.dark\:text-red-400:is(.dark *){--tw-text-opacity:1;color:rgb(248 113 113/var(--tw-text-opacity,1))}.dark\:text-slate-300:is(.dark *){--tw-text-opacity:1;color:rgb(203 213 225/var(--tw-text-opacity,1))}.dark\:text-slate-400:is(.dark *){--tw-text-opacity:1;color:rgb(148 163 184/var(--tw-text-opacity,1))}.dark\:text-slate-900:is(.dark *){--tw-text-opacity:1;color:rgb(15 23 42/var(--tw-text-opacity,1))}.dark\:text-white:is(.dark *){--tw-text-opacity:1;color:rgb(255 255 255/var(--tw-text-opacity,1))}.dark\:shadow-\[0_10px_35px_-6px_rgba\(0\2c 0\2c 0\2c 0\.55\)\]:is(.dark *){--tw-shadow:0 10px 35px -6px rgba(0,0,0,.55);--tw-shadow-colored:0 10px 35px -6px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)}.dark\:hover\:bg-slate-700:hover:is(.dark *){--tw-bg-opacity:1;background-color:rgb(51 65 85/var(--tw-bg-opacity,1))}.dark\:hover\:bg-slate-800:hover:is(.dark *){--tw-bg-opacity:1;background-color:rgb(30 41 59/var(--tw-bg-opacity,1))}.dark\:hover\:text-emerald-400:hover:is(.dark *){--tw-text-opacity:1;color:rgb(52 211 153/var(--tw-text-opacity,1))}.dark\:focus\:ring-emerald-400\/40:focus:is(.dark *){--tw-ring-color:rgba(52,211,153,.4)}@media (min-width:640px){.sm\:gap-4{gap:1rem}}@media (min-width:768px){.md\:hidden{display:none}}.ltr\:left-0:where([dir=ltr],[dir=ltr] *){left:0}.ltr\:left-4:where([dir=ltr],[dir=ltr] *){left:1rem}.ltr\:right-4:where([dir=ltr],[dir=ltr] *){right:1rem}.ltr\:pl-12:where([dir=ltr],[dir=ltr] *){padding-left:3rem}.ltr\:pr-4:where([dir=ltr],[dir=ltr] *){padding-right:1rem}.dark\:ltr\:translate-x-6:where([dir=ltr],[dir=ltr] *):is(.dark *){--tw-translate-x:1.5rem;transform:translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.rtl\:left-4:where([dir=rtl],[dir=rtl] *){left:1rem}.rtl\:right-0:where([dir=rtl],[dir=rtl] *){right:0}.rtl\:right-4:where([dir=rtl],[dir=rtl] *){right:1rem}.rtl\:rotate-180:where([dir=rtl],[dir=rtl] *){--tw-rotate:180deg;transform:translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.rtl\:pl-4:where([dir=rtl],[dir=rtl] *){padding-left:1rem}.rtl\:pr-12:where([dir=rtl],[dir=rtl] *){padding-right:3rem}.dark\:rtl\:-translate-x-6:where([dir=rtl],[dir=rtl] *):is(.dark *){--tw-translate-x:-1.5rem;transform:translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}</style>
+    <style>
+        body { background-color: #f8f9fa; color: #191c1d; min-height: 100dvh; }
+        .material-symbols-outlined {
+            display: inline-block;
+            width: 1em;
+            height: 1em;
+            overflow: hidden;
+            line-height: 1;
+            white-space: nowrap;
+            direction: ltr;
+            text-transform: none;
+            opacity: 0;
+            transition: opacity .12s ease-out;
+        }
+        /* تظهر الأيقونات فقط بعد التأكد من اكتمال تحميل الخط فعليًا، بدل عرض النص الخام (مثل "Fa") أثناء التحميل */
+        .fonts-ready .material-symbols-outlined { opacity: 1; }
+        .arabesque-pattern { background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0L33 27L60 30L33 33L30 60L27 33L0 30L27 27L30 0Z' fill='%23064e3b' fill-opacity='0.03' fill-rule='evenodd'/%3E%3C/svg%3E"); background-size: 60px 60px; }
+        .bg-watermark { background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23064e3b' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); }
+        .dark body { background-color: #0f1115; color: #e1e3e4; }
+        .dark .arabesque-pattern, .dark .bg-watermark { opacity: 0.8; }
+        .pulse-ring { animation: pulse 3s infinite cubic-bezier(0.215, 0.61, 0.355, 1); }
+        @keyframes pulse { 0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(6, 78, 59, 0.4); } 70% { transform: scale(1); box-shadow: 0 0 0 20px rgba(6, 78, 59, 0); } 100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(6, 78, 59, 0); } }
+        .glass-panel { background: rgba(248, 249, 250, 0.8); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
+        .dark .glass-panel { background: rgba(30, 32, 32, 0.8); }
+        .screen-hidden { display: none !important; }
+
+        /* ==== إطار القارئ/السورة النشطة أثناء التشغيل ==== */
+        .reader-frame { transition: background-color .45s ease, border-color .45s ease, box-shadow .45s ease; }
+        .reader-frame.reader-active {
+            background-color: rgba(16, 185, 129, 0.10) !important;
+            border-color: rgba(16, 185, 129, 0.55) !important;
+            box-shadow: 0 0 0 1px rgba(16, 185, 129, 0.25);
+        }
+        .dark .reader-frame.reader-active {
+            background-color: rgba(52, 211, 153, 0.12) !important;
+            border-color: rgba(52, 211, 153, 0.5) !important;
+            box-shadow: 0 0 0 1px rgba(52, 211, 153, 0.3);
+        }
+
+        /* ==== مسار (Track) شريط التقدم ==== */
+        #progress-track, #mini-progress-track {
+            box-shadow: inset 0 1px 2px rgba(0,0,0,0.10);
+        }
+        .dark #progress-track, .dark #mini-progress-track {
+            box-shadow: inset 0 1px 2px rgba(0,0,0,0.4);
+        }
+        
+
+        /* ==== تحسينات شريط التقدم التفاعلي ==== */
+        .custom-progress #progress-bar, .custom-mini-progress {
+            transition: width 0.15s linear;
+        }
+        .custom-progress.dragging #progress-bar {
+            transition: none; /* إيقاف التنعيم أثناء السحب ليكون فورياً */
+        }
+        .custom-progress #progress-thumb {
+            transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease;
+        }
+        .custom-progress:hover #progress-thumb, .custom-progress:active #progress-thumb, .custom-progress.dragging #progress-thumb {
+            transform: scale(1.4);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        /* ==== خط زخرفي لعناوين الصفحات العلوية ==== */
+        .font-page-title {
+            font-family: 'Amiri', 'Noto Serif', serif;
+            font-weight: 700;
+            letter-spacing: 0;
+        }
+    </style>
+    <style id="riwaya-selector-style">
+        .rw-actions-row{display:flex;align-items:center;justify-content:center;gap:10px;margin-top:14px;flex-wrap:wrap}
+        .rw-name{margin:0 0 6px}
+        .rw-pill{display:inline-flex;align-items:center;gap:6px;padding:7px 16px;border-radius:9999px;font-size:12px;font-weight:700;line-height:1;cursor:pointer;border:1px solid transparent;white-space:nowrap;transition:background-color .15s ease}
+        .rw-pill .material-symbols-outlined{font-size:16px;line-height:1}
+        .rw-fav-pill{color:#003527;border-color:rgba(0,53,39,.3);background:transparent}
+        .rw-fav-pill:hover{background:rgba(0,53,39,.06)}
+        .dark .rw-fav-pill{color:#34d399;border-color:rgba(52,211,153,.5)}
+        .dark .rw-fav-pill:hover{background:rgba(52,211,153,.08)}
+        .rw-select-wrap{position:relative;display:inline-block}
+        .rw-select-btn{color:#003527;background:#edeeef;border-color:#bfc9c3}
+        .rw-select-btn:hover{background:#e2e4e5}
+        .dark .rw-select-btn{color:#34d399;background:#1e293b;border-color:#334155}
+        .dark .rw-select-btn:hover{background:#28374d}
+        .rw-menu{position:absolute;top:calc(100% + 8px);left:50%;transform:translateX(-50%);z-index:70;min-width:210px;max-width:260px;background:#ffffff;border:1px solid #bfc9c3;border-radius:14px;box-shadow:0 14px 30px rgba(0,0,0,.16);overflow:hidden;padding:4px 0}
+        .dark .rw-menu{background:#1e293b;border-color:#334155;box-shadow:0 14px 30px rgba(0,0,0,.5)}
+        .rw-menu-item{display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;text-align:start;padding:10px 16px;font-size:13px;color:#191c1d;background:transparent;border:0;cursor:pointer;white-space:nowrap}
+        .rw-menu-item:hover{background:#edeeef}
+        .dark .rw-menu-item{color:#ffffff}
+        .dark .rw-menu-item:hover{background:#334155}
+        .rw-menu-item.rw-active{color:#003527;font-weight:700;background:rgba(0,53,39,.05)}
+        .dark .rw-menu-item.rw-active{color:#34d399;background:rgba(52,211,153,.1)}
+        .rw-menu-item .material-symbols-outlined{font-size:16px}
+    </style>
+</head>
+<body class="bg-watermark font-body-lg md:hidden relative pb-24 transition-colors duration-300">
+
+    <!-- Language Modal -->
+    <div id="lang-modal" class="hidden fixed inset-0 z-[200] bg-black/50 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-surface-container-lowest dark:bg-slate-800 w-full max-w-sm rounded-xl p-6 shadow-xl">
+            <h3 class="font-headline-md text-2xl mb-6 text-primary dark:text-emerald-400" data-i18n="select_lang">اختر اللغة</h3>
+            <div class="space-y-3">
+                <button onclick="setLanguage('ar')" class="w-full text-right px-4 py-3 rounded-lg border border-outline-variant dark:border-slate-600 hover:bg-surface-container dark:hover:bg-slate-700 transition-colors font-display-quran text-xl flex justify-between items-center flex-row-reverse dark:text-white">
+                    العربية <span class="text-xs bg-surface-variant dark:bg-slate-600 px-2 py-1 rounded">AR</span>
+                </button>
+                <button onclick="setLanguage('en')" class="w-full text-left px-4 py-3 rounded-lg border border-outline-variant dark:border-slate-600 hover:bg-surface-container dark:hover:bg-slate-700 transition-colors flex justify-between items-center dark:text-white dir-ltr text-left">
+                    English <span class="text-xs bg-surface-variant dark:bg-slate-600 px-2 py-1 rounded">EN</span>
+                </button>
+            </div>
+            <div class="mt-6 flex justify-end">
+                <button class="px-4 py-2 text-primary dark:text-emerald-400 font-bold uppercase hover:bg-primary/10 rounded-lg" onclick="toggleLangModal(false)" data-i18n="cancel">إلغاء</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== PLAYER TOOLS MENU ==================== -->
+    <div id="player-menu-modal" class="hidden fixed inset-0 z-[200] bg-black/50 backdrop-blur-sm flex items-end justify-center p-4" onclick="if(event.target===this) togglePlayerMenu(false)">
+        <div class="bg-surface-container-lowest dark:bg-slate-800 w-full max-w-sm rounded-2xl p-4 shadow-xl mb-20 space-y-2">
+            <button onclick="toggleSleepModal(true)" class="w-full flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-surface-container dark:hover:bg-slate-700 text-on-surface dark:text-white text-start">
+                <span class="material-symbols-outlined text-primary dark:text-emerald-400">bedtime</span>
+                <span class="font-bold">مؤقت النوم</span>
+            </button>
+            <button onclick="toggleHifzModal(true)" class="w-full flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-surface-container dark:hover:bg-slate-700 text-on-surface dark:text-white text-start">
+                <span class="material-symbols-outlined text-primary dark:text-emerald-400">repeat_on</span>
+                <span class="font-bold">وضع الحفظ (تكرار مقطع)</span>
+            </button>
+            <button onclick="togglePlayerMenu(false)" class="w-full text-center px-4 py-2 text-on-surface-variant dark:text-slate-400 font-bold">إلغاء</button>
+        </div>
+    </div>
+
+    <!-- ==================== SLEEP TIMER MODAL ==================== -->
+    <div id="sleep-timer-modal" class="hidden fixed inset-0 z-[200] bg-black/50 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-surface-container-lowest dark:bg-slate-800 w-full max-w-sm rounded-xl p-6 shadow-xl">
+            <h3 class="font-headline-md text-2xl mb-2 text-primary dark:text-emerald-400">مؤقت النوم</h3>
+            <p class="text-sm text-on-surface-variant dark:text-slate-400 mb-4">أوقف التشغيل تلقائياً بعد:</p>
+            <div class="grid grid-cols-2 gap-2">
+                <button onclick="setSleepTimer(15)" class="px-4 py-3 rounded-lg border border-outline-variant dark:border-slate-600 hover:bg-surface-container dark:hover:bg-slate-700 dark:text-white font-bold">15 دقيقة</button>
+                <button onclick="setSleepTimer(30)" class="px-4 py-3 rounded-lg border border-outline-variant dark:border-slate-600 hover:bg-surface-container dark:hover:bg-slate-700 dark:text-white font-bold">30 دقيقة</button>
+                <button onclick="setSleepTimer(45)" class="px-4 py-3 rounded-lg border border-outline-variant dark:border-slate-600 hover:bg-surface-container dark:hover:bg-slate-700 dark:text-white font-bold">45 دقيقة</button>
+                <button onclick="setSleepTimer(60)" class="px-4 py-3 rounded-lg border border-outline-variant dark:border-slate-600 hover:bg-surface-container dark:hover:bg-slate-700 dark:text-white font-bold">60 دقيقة</button>
+            </div>
+            <button onclick="setSleepTimer('end')" class="w-full mt-2 px-4 py-3 rounded-lg border border-outline-variant dark:border-slate-600 hover:bg-surface-container dark:hover:bg-slate-700 dark:text-white font-bold">بعد نهاية السورة الحالية</button>
+            <div class="mt-6 flex justify-between">
+                <button class="px-4 py-2 text-red-500 font-bold hover:bg-red-500/10 rounded-lg" onclick="setSleepTimer('off')">إلغاء المؤقت</button>
+                <button class="px-4 py-2 text-primary dark:text-emerald-400 font-bold hover:bg-primary/10 rounded-lg" onclick="toggleSleepModal(false)">إغلاق</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== HIFZ MODE MODAL ==================== -->
+    <div id="hifz-modal" class="hidden fixed inset-0 z-[200] bg-black/50 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-surface-container-lowest dark:bg-slate-800 w-full max-w-sm rounded-xl p-6 shadow-xl">
+            <h3 class="font-headline-md text-2xl mb-2 text-primary dark:text-emerald-400">وضع الحفظ</h3>
+            <p class="text-sm text-on-surface-variant dark:text-slate-400 mb-4">حدد بداية ونهاية المقطع أثناء الاستماع، ثم اختر عدد مرات التكرار.</p>
+            <div class="space-y-3">
+                <div class="flex items-center gap-2">
+                    <button onclick="setHifzStart()" class="shrink-0 px-3 py-2 rounded-lg bg-primary dark:bg-emerald-400 text-white dark:text-slate-900 text-xs font-bold">تعيين البداية الآن</button>
+                    <input id="hifz-start-input" readonly class="flex-1 text-center py-2 rounded-lg border border-outline-variant dark:border-slate-600 dark:bg-slate-700 dark:text-white text-sm" value="0:00"/>
+                </div>
+                <div class="flex items-center gap-2">
+                    <button onclick="setHifzEnd()" class="shrink-0 px-3 py-2 rounded-lg bg-primary dark:bg-emerald-400 text-white dark:text-slate-900 text-xs font-bold">تعيين النهاية الآن</button>
+                    <input id="hifz-end-input" readonly class="flex-1 text-center py-2 rounded-lg border border-outline-variant dark:border-slate-600 dark:bg-slate-700 dark:text-white text-sm" value="0:00"/>
+                </div>
+                <div class="flex items-center gap-2">
+                    <label class="text-sm text-on-surface dark:text-white shrink-0">عدد التكرارات</label>
+                    <input id="hifz-reps-input" type="number" min="1" max="50" value="5" class="flex-1 text-center py-2 rounded-lg border border-outline-variant dark:border-slate-600 dark:bg-slate-700 dark:text-white text-sm"/>
+                </div>
+            </div>
+            <div class="mt-6 flex justify-between items-center">
+                <button class="px-4 py-2 text-red-500 font-bold hover:bg-red-500/10 rounded-lg" onclick="stopHifzMode(); toggleHifzModal(false)">إيقاف الوضع</button>
+                <div class="flex gap-2">
+                    <button class="px-4 py-2 text-on-surface-variant dark:text-slate-400 font-bold" onclick="toggleHifzModal(false)">إلغاء</button>
+                    <button class="px-4 py-2 bg-primary dark:bg-emerald-400 text-white dark:text-slate-900 font-bold rounded-lg" onclick="startHifzMode()">ابدأ</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== HOME SCREEN (RECITERS) ==================== -->
+    <div id="screen-home" class="block min-h-screen">
+        <header class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-[#0f1115]/80 backdrop-blur-xl transition-colors duration-300 flex items-center justify-between px-6 h-16 max-w-[720px] mx-auto">
+            <button class="text-primary dark:text-emerald-400 opacity-0 pointer-events-none"><span class="material-symbols-outlined">menu</span></button>
+            <h1 class="font-page-title text-3xl font-bold text-primary dark:text-emerald-400 text-center w-full" data-i18n="app_title">ورتّـل</h1>
+            <button onclick="toggleLangModal(true)" class="text-primary dark:text-emerald-400 hover:bg-primary/10 p-2 rounded-full"><span class="material-symbols-outlined">language</span></button>
+        </header>
+
+        <main class="pt-[88px] px-6 pb-10 max-w-[720px] mx-auto space-y-10">
+            
+            <!-- Featured Reciter -->
+            <section id="featured-reciter-section" class="hidden">
+                <h2 id="featured-section-title" class="font-headline-md text-xl font-bold text-on-surface dark:text-white mb-4" data-i18n="featured_reciter">القارئ المتميز</h2>
+                <div class="bg-surface-container-lowest dark:bg-slate-800 rounded-xl overflow-hidden shadow-sm border border-surface-container dark:border-slate-700 relative" id="featured-card">
+                    <div id="featured-carousel-track" dir="ltr" class="flex transition-transform duration-700 ease-in-out">
+                        <!-- سيتم حقن إطارات القارئ المتميز هنا -->
+                    </div>
+                    <div id="featured-carousel-dots" class="absolute bottom-2 inset-x-0 flex justify-center gap-1.5 z-10"></div>
+                </div>
+            </section>
+
+            <!-- Eminent Voices -->
+            <section>
+                <div class="flex justify-between items-end mb-4">
+                    <h2 class="font-headline-md text-xl font-bold text-on-surface dark:text-white" data-i18n="eminent_voices">أصوات بارزة</h2>
+                    <a class="font-label-sm text-sm text-primary dark:text-emerald-400 hover:underline cursor-pointer" data-i18n="see_all">عرض الكل</a>
+                </div>
+                <div id="reciters-container" class="space-y-4">
+                    <p class="text-center text-gray-500 py-10" data-i18n="loading">جاري تحميل البيانات...</p>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- ==================== FAVORITES SCREEN ==================== -->
+    <div id="screen-favorites" class="screen-hidden block min-h-screen">
+        <header class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-[#0f1115]/80 backdrop-blur-xl flex items-center justify-center px-6 h-16 max-w-[720px] mx-auto">
+            <h1 class="font-page-title text-2xl font-bold text-primary dark:text-emerald-400" data-i18n="nav_fav">المـفـضـلة</h1>
+        </header>
+        <main id="favorites-container" class="pt-[100px] px-6 max-w-[720px] mx-auto flex flex-col pb-24 items-center text-center">
+        </main>
+    </div>
+
+    <!-- ==================== SETTINGS SCREEN ==================== -->
+    <div id="screen-settings" class="screen-hidden block min-h-screen">
+        <header class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-[#0f1115]/80 backdrop-blur-xl flex items-center justify-center px-6 h-16 max-w-[720px] mx-auto">
+            <h1 class="font-page-title text-2xl font-bold text-primary dark:text-emerald-400" data-i18n="nav_settings">الإعــدادات</h1>
+        </header>
+        <main class="pt-[100px] px-6 max-w-[720px] mx-auto space-y-4">
+            <button onclick="toggleLangModal(true)" class="w-full flex items-center justify-between p-4 bg-surface-container-lowest dark:bg-slate-800 rounded-xl shadow-sm border border-surface-container dark:border-slate-700 hover:bg-surface-container dark:hover:bg-slate-700 transition-colors">
+                <div class="flex items-center gap-4">
+                    <div class="w-10 h-10 rounded-full bg-primary/10 dark:bg-emerald-400/20 flex items-center justify-center text-primary dark:text-emerald-400"><span class="material-symbols-outlined">language</span></div>
+                    <span class="font-body-lg text-on-surface dark:text-white" data-i18n="select_lang">تغيير اللغة</span>
+                </div>
+                <span class="material-symbols-outlined text-on-surface-variant dark:text-slate-400 rtl:rotate-180">chevron_right</span>
+            </button>
+            <button onclick="toggleDarkMode()" class="w-full flex items-center justify-between p-4 bg-surface-container-lowest dark:bg-slate-800 rounded-xl shadow-sm border border-surface-container dark:border-slate-700 hover:bg-surface-container dark:hover:bg-slate-700 transition-colors">
+                <div class="flex items-center gap-4">
+                    <div class="w-10 h-10 rounded-full bg-primary/10 dark:bg-emerald-400/20 flex items-center justify-center text-primary dark:text-emerald-400"><span class="material-symbols-outlined">dark_mode</span></div>
+                    <span class="font-body-lg text-on-surface dark:text-white" data-i18n="dark_mode">الوضع الليلي</span>
+                </div>
+                <div id="dark-toggle" class="w-12 h-6 bg-surface-variant dark:bg-emerald-500 rounded-full p-1 flex items-center transition-colors relative">
+                    <div id="dark-toggle-thumb" class="w-4 h-4 bg-outline dark:bg-white rounded-full shadow-sm transition-transform duration-300 absolute translate-x-0 dark:rtl:-translate-x-6 dark:ltr:translate-x-6"></div>
+                </div>
+            </button>
+        </main>
+    </div>
+
+    <!-- ==================== PROFILE (SURAHS) SCREEN ==================== -->
+    <div id="screen-profile" class="screen-hidden arabesque-pattern min-h-screen pb-[140px] md:hidden">
+        <header class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-[#0f1115]/80 backdrop-blur-xl">
+            <div class="flex items-center justify-between px-6 h-16 w-full max-w-[720px] mx-auto">
+                <button class="nav-home text-on-surface-variant dark:text-emerald-400 hover:bg-primary/10 p-2 rounded-full"><span class="material-symbols-outlined rtl:rotate-180">arrow_back</span></button>
+                <h1 class="font-page-title text-2xl font-bold text-primary dark:text-emerald-400" data-i18n="app_title">ورتّـل</h1>
+                <button class="text-on-surface-variant dark:text-emerald-400 opacity-0 pointer-events-none p-2"><span class="material-symbols-outlined">more_vert</span></button>
+            </div>
+        </header>
+
+        <main class="pt-20 px-6 max-w-[720px] mx-auto">
+            <div class="flex flex-col items-center mb-8 pt-4" id="profile-header"></div>
+            <div class="flex flex-col gap-4" id="surahs-container"></div>
+        </main>
+    </div>
+
+    <!-- ==================== NOW PLAYING SCREEN ==================== -->
+    <div id="screen-player" class="screen-hidden arabesque-pattern h-[100dvh] flex-col overflow-hidden bg-surface dark:bg-[#0f1115]">
+        <header class="flex items-center justify-between px-6 h-16 w-full max-w-[720px] mx-auto pt-4 shrink-0 relative z-10">
+            <button class="nav-home w-10 h-10 flex items-center justify-center text-on-surface-variant dark:text-slate-300 hover:bg-primary/10 rounded-full"><span class="material-symbols-outlined rtl:rotate-180">keyboard_arrow_down</span></button>
+            <div class="flex flex-col items-center">
+                <h1 class="text-xs font-bold text-primary dark:text-emerald-400 uppercase tracking-wider" data-i18n="now_playing">قيد التشغيل</h1>
+            </div>
+            <button onclick="togglePlayerMenu(true)" class="w-10 h-10 flex items-center justify-center text-on-surface-variant dark:text-slate-300 hover:bg-primary/10 rounded-full"><span class="material-symbols-outlined">more_vert</span></button>
+        </header>
+
+        <main class="flex-1 w-full max-w-[720px] mx-auto flex flex-col justify-between px-6 pb-[110px] pt-2 relative z-10 min-h-0">
+            <div class="flex flex-col items-center justify-center flex-1 min-h-0">
+                <div class="relative w-[60vw] max-w-[280px] aspect-square mb-6 flex items-center justify-center">
+                    <div class="absolute inset-0 rounded-full pulse-ring bg-primary-container/5 dark:border-emerald-400/20"></div>
+                    <div class="absolute inset-4 rounded-full bg-primary-container/10 dark:border-emerald-400/30"></div>
+                    <div class="relative w-[80%] h-[80%] rounded-full overflow-hidden shadow-lg border-[3px] border-surface-container-lowest dark:border-slate-800 z-10">
+                        <img id="player-img" class="object-cover w-full h-full" src="" loading="lazy"/>
+                    </div>
+                </div>
+                <div class="text-center space-y-1">
+                    <h2 id="player-surah" class="font-display-quran text-3xl font-bold text-primary dark:text-white tracking-tight">السورة</h2>
+                    <p id="player-reciter" class="text-lg text-on-surface-variant dark:text-slate-300">القارئ</p>
+                    <div class="flex items-center justify-center gap-2 flex-wrap mt-1">
+                        <div id="sleep-badge" class="hidden px-3 py-1 rounded-full bg-primary/10 dark:bg-emerald-400/20 text-primary dark:text-emerald-400 text-xs font-bold cursor-pointer" onclick="toggleSleepModal(true)"><span></span></div>
+                        <div id="hifz-badge" class="hidden px-3 py-1 rounded-full bg-secondary-container/20 text-on-secondary-container dark:text-emerald-400 text-xs font-bold cursor-pointer" onclick="toggleHifzModal(true)"><span></span></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="w-full shrink-0 space-y-6 mt-4">
+                <!-- عنصر تشغيل الصوت الخفي -->
+                <audio id="audio-player" class="hidden" src=""></audio>
+                
+                <div class="space-y-2">
+                    <div id="progress-container" class="w-full py-2 cursor-pointer touch-none relative custom-progress">
+                        <div id="progress-track" class="w-full h-2 bg-surface-variant dark:bg-slate-700 rounded-full relative">
+                            <div id="progress-bar" class="absolute top-0 ltr:left-0 rtl:right-0 h-full bg-secondary-container dark:bg-emerald-500 rounded-full w-[0%] pointer-events-none"></div>
+                            <div id="progress-thumb" class="absolute top-1/2 w-4 h-4 -mt-2 -ms-2 bg-secondary-container dark:bg-emerald-500 rounded-full border-2 border-white dark:border-slate-900 shadow-md pointer-events-none z-10" style="inset-inline-start: 0%;"></div>
+                        </div>
+                    </div>
+                    <div class="flex justify-between text-xs text-on-surface-variant dark:text-slate-400 mt-2">
+                        <span id="current-time">0:00</span><span id="total-time">--:--</span>
+                    </div>
+                </div>
+                
+                <div class="flex items-center justify-between px-2">
+                    <button id="autoplay-btn" onclick="toggleAutoplay()" title="تشغيل تلقائي للسورة التالية" class="w-12 h-12 flex items-center justify-center text-on-surface-variant dark:text-slate-300 hover:bg-surface-container dark:hover:bg-slate-800 rounded-full transition-colors"><span id="autoplay-icon" class="material-symbols-outlined">playlist_play</span></button>
+                    <button onclick="playPrev()" class="w-14 h-14 flex items-center justify-center text-on-surface dark:text-white hover:bg-surface-container dark:hover:bg-slate-800 rounded-full"><span class="material-symbols-outlined text-[32px] rtl:rotate-180" style="font-variation-settings: 'FILL' 1;">skip_previous</span></button>
+                    <button onclick="togglePlay()" class="relative w-20 h-20 flex items-center justify-center bg-primary dark:bg-emerald-400 text-white dark:text-slate-900 rounded-full shadow-md hover:bg-primary-container active:scale-95">
+                        <span id="buffer-spinner" class="hidden absolute inset-0 rounded-full border-[3px] border-white/30 dark:border-slate-900/30 border-t-white dark:border-t-slate-900 animate-spin"></span>
+                        <span id="play-pause-btn" class="material-symbols-outlined text-[40px] rtl:rotate-180" style="font-variation-settings: 'FILL' 1;">pause</span>
+                    </button>
+                    <button onclick="playNext()" class="w-14 h-14 flex items-center justify-center text-on-surface dark:text-white hover:bg-surface-container dark:hover:bg-slate-800 rounded-full"><span class="material-symbols-outlined text-[32px] rtl:rotate-180" style="font-variation-settings: 'FILL' 1;">skip_next</span></button>
+                    <button id="repeat-btn" onclick="toggleRepeat()" title="تكرار السورة الحالية" class="w-12 h-12 flex items-center justify-center text-on-surface-variant dark:text-slate-300 hover:bg-surface-container dark:hover:bg-slate-800 rounded-full transition-colors"><span id="repeat-icon" class="material-symbols-outlined">repeat</span></button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- ==================== MINI PLAYER ==================== -->
+    <div id="mini-player" class="hidden fixed bottom-24 inset-x-4 max-w-[420px] mx-auto z-40 bg-surface-container-lowest/95 dark:bg-[#1a1d1d]/95 backdrop-blur-2xl shadow-[0_10px_35px_-6px_rgba(0,53,39,0.28)] dark:shadow-[0_10px_35px_-6px_rgba(0,0,0,0.55)] border border-outline-variant/40 dark:border-slate-700/60 rounded-2xl transition-colors duration-300">
+        <div id="mini-progress-track" class="w-full h-1 bg-surface-variant dark:bg-slate-700 rounded-t-2xl overflow-hidden cursor-pointer">
+            <div id="mini-progress-bar" class="h-full bg-primary dark:bg-emerald-400 w-[0%] pointer-events-none custom-mini-progress"></div>
+        </div>
+        <div class="flex items-center gap-3 px-3 py-2">
+            <img id="mini-player-img" class="w-10 h-10 rounded-full object-cover shrink-0" src="" loading="lazy"/>
+            <div class="flex-1 min-w-0 cursor-pointer" onclick="showScreen('screen-player')">
+                <h4 id="mini-player-surah" class="text-sm font-bold text-on-surface dark:text-white truncate">-</h4>
+                <p id="mini-player-reciter" class="text-xs text-on-surface-variant dark:text-slate-400 truncate">-</p>
+            </div>
+            <button onclick="event.stopPropagation(); togglePlay()" class="w-10 h-10 shrink-0 flex items-center justify-center bg-primary dark:bg-emerald-400 text-white dark:text-slate-900 rounded-full active:scale-95 transition">
+                <span id="mini-play-pause-btn" class="material-symbols-outlined text-xl">pause</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- ==================== BOTTOM NAVIGATION ==================== -->
+    <nav id="bottom-nav" class="fixed bottom-4 inset-x-4 max-w-[420px] mx-auto flex justify-around items-center gap-1 px-2 py-2 bg-surface-container-lowest/95 dark:bg-[#1a1d1d]/95 backdrop-blur-2xl shadow-[0_10px_35px_-6px_rgba(0,53,39,0.28)] dark:shadow-[0_10px_35px_-6px_rgba(0,0,0,0.55)] border border-outline-variant/40 dark:border-slate-700/60 rounded-[26px] z-50 md:hidden transition-colors duration-300">
+        <button id="nav-btn-home" class="nav-home flex flex-col items-center justify-center gap-0.5 min-w-[64px] py-1.5 text-on-surface-variant dark:text-slate-400 hover:text-primary dark:hover:text-emerald-400 active:scale-90 transition-all duration-200">
+            <span class="material-symbols-outlined text-[22px] leading-none">record_voice_over</span>
+            <span class="text-[10px] font-bold tracking-tight" data-i18n="nav_reciters">القراء</span>
+        </button>
+        <button id="nav-btn-favorites" class="nav-favorites flex flex-col items-center justify-center gap-0.5 min-w-[64px] py-1.5 text-on-surface-variant dark:text-slate-400 hover:text-primary dark:hover:text-emerald-400 active:scale-90 transition-all duration-200">
+            <span class="material-symbols-outlined text-[22px] leading-none">bookmark</span>
+            <span class="text-[10px] font-bold tracking-tight" data-i18n="nav_fav">المفضلة</span>
+        </button>
+        <button id="nav-btn-player" class="nav-player flex flex-col items-center justify-center gap-0.5 min-w-[64px] py-1.5 text-on-surface-variant dark:text-slate-400 hover:text-primary dark:hover:text-emerald-400 active:scale-90 transition-all duration-200">
+            <span class="material-symbols-outlined text-[22px] leading-none">play_circle</span>
+            <span class="text-[10px] font-bold tracking-tight" data-i18n="nav_player">المشغل</span>
+        </button>
+        <button id="nav-btn-settings" class="nav-settings flex flex-col items-center justify-center gap-0.5 min-w-[64px] py-1.5 text-on-surface-variant dark:text-slate-400 hover:text-primary dark:hover:text-emerald-400 active:scale-90 transition-all duration-200">
+            <span class="material-symbols-outlined text-[22px] leading-none">settings</span>
+            <span class="text-[10px] font-bold tracking-tight" data-i18n="nav_settings">الإعدادات</span>
+        </button>
+    </nav>
+
+    <!-- App Logic -->
+    <script>
+        const i18n = {
+            en: {
+                app_title: "Wartel", select_lang: "Select Language", cancel: "Cancel", loading: "Loading Data...",
+                featured_reciter: "Featured Reciter", eminent_voices: "Eminent Voices", add_fav: "Add to Favorites", see_all: "See All",
+                now_playing: "Now Playing", nav_reciters: "Reciters", nav_fav: "Favorites", nav_player: "Player", 
+                nav_settings: "Settings", no_favorites: "No favorites yet.", dark_mode: "Dark Mode",
+                ayahs: "Ayahs", search_surah: "Search surah..."
+            },
+            ar: {
+                app_title: "ورتّـل", select_lang: "تغيير اللغة", cancel: "إلغاء", loading: "جاري تحميل البيانات...",
+                featured_reciter: "القارئ المتميز", eminent_voices: "أصوات بارزة", add_fav: "أضف للمفضلة", see_all: "عرض الكل",
+                now_playing: "قيد التشغيل", nav_reciters: "القراء", nav_fav: "المـفـضـلة", nav_player: "المشغل", 
+                nav_settings: "الإعــدادات", no_favorites: "لا توجد مفضلة بعد.", dark_mode: "الوضع الليلي",
+                ayahs: "آيات", search_surah: "ابحث عن سورة..."
+            }
+        };
+
+        let allReciters = [];
+        let favorites = loadFavorites();
+        let currentReciter = null;
+
+        function loadFavorites() {
+            try {
+                const saved = localStorage.getItem('wartel_favorites');
+                return saved ? JSON.parse(saved) : [];
+            } catch (e) {
+                return [];
+            }
+        }
+
+        function saveFavorites() {
+            try {
+                localStorage.setItem('wartel_favorites', JSON.stringify(favorites));
+            } catch (e) {
+                console.error('تعذّر حفظ المفضلة:', e);
+            }
+        }
+        
+        // إعدادات افتراضية في حال لم يتم تحميل الملف بنجاح
+        let globalSettings = {
+            name_ar: "ورتّـل",
+            name_en: "Wartel",
+            desc_ar: "تطبيق استماع للقرآن الكريم بأصوات نخبة من القراء.",
+            desc_en: "A Quran audio listening app featuring eminent reciters.",
+            icon_url: "https://via.placeholder.com/150",
+            featured_title_ar: "القارئ المتميز",
+            featured_title_en: "Featured Reciter",
+            featured: [
+                {
+                    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuBM_ADexsiYGA6FAlIsfzCpHkiPPZ-vhXpXMn0_rfz9a1qo6EZ3GWrNc_CQQNE3ot5DhUR2Sxdyh_jaqq6Zym3a6ssGGMTSaghuuTAoFcPlUnmn1rnTZybGLbb-R6LK-PtYjfhs8VBrqfz3J7-o4ZgehhnKFR4-6Lg3hPpWA9ZFY3D9tm673vke5EGD8Y1HHwrfrJG-J2gBTL-XUGHOh-SjPEE9z224F8ErhIYCTDJH0QnXXVRB0JS4",
+                    name_ar: "مشاري راشد العفاسي",
+                    name_en: "Mishary Rashid Alafasy",
+                    desc_ar: "قارئ وإمام وخطيب كويتي ومنشد.",
+                    desc_en: "Kuwaiti Qari, imam, preacher, and Nasheed artist.",
+                    json_file: "mishary.json"
+                }
+            ]
+        };
+
+        async function fetchSettings() {
+            try {
+                const response = await fetch('settings.json');
+                const fetchedSettings = await response.json();
+                
+                // دمج الإعدادات المحملة مع الافتراضية
+                globalSettings = { ...globalSettings, ...fetchedSettings };
+
+                // توافق مع تنسيق قديم (قارئ متميز واحد فقط بدل مصفوفة)
+                if ((!globalSettings.featured || !globalSettings.featured.length) && fetchedSettings.feat_img) {
+                    globalSettings.featured = [{
+                        img: fetchedSettings.feat_img,
+                        name_ar: fetchedSettings.feat_name_ar,
+                        name_en: fetchedSettings.feat_name_en,
+                        desc_ar: fetchedSettings.feat_desc_ar,
+                        desc_en: fetchedSettings.feat_desc_en,
+                        json_file: fetchedSettings.feat_json
+                    }];
+                }
+                
+                i18n.ar.app_title = globalSettings.name_ar || "ورتّـل";
+                i18n.en.app_title = globalSettings.name_en || "Wartel";
+                
+                const lang = document.documentElement.getAttribute('lang') || 'ar';
+                document.title = (lang === 'ar' ? globalSettings.name_ar : globalSettings.name_en) + " - تطبيق استماع للقرآن";
+                setLanguage(lang);
+
+            } catch (error) {
+                // في حال فشل التحميل، نستخدم القيم الافتراضية المحددة مسبقاً
+                const lang = document.documentElement.getAttribute('lang') || 'ar';
+                setLanguage(lang);
+                console.log("لم يتم العثور على ملف settings.json، تم استخدام الإعدادات الافتراضية.");
+            }
+        }
+
+        // ==================== كاروسيل القارئ المتميز ====================
+        let featuredCarouselIndex = 0;
+        let featuredCarouselTimer = null;
+
+        function renderFeaturedReciter(lang) {
+            const list = (globalSettings && Array.isArray(globalSettings.featured)) ? globalSettings.featured.filter(f => f && f.img) : [];
+            const section = document.getElementById('featured-reciter-section');
+            if (!list.length) { section.classList.add('hidden'); return; }
+            section.classList.remove('hidden');
+
+            const titleEl = document.getElementById('featured-section-title');
+            const customTitle = lang === 'ar' ? globalSettings.featured_title_ar : globalSettings.featured_title_en;
+            titleEl.textContent = customTitle || i18n[lang].featured_reciter;
+
+            const track = document.getElementById('featured-carousel-track');
+            const dots = document.getElementById('featured-carousel-dots');
+
+            track.innerHTML = list.map(item => {
+                const name = (lang === 'ar' ? item.name_ar : item.name_en) || '';
+                const desc = (lang === 'ar' ? item.desc_ar : item.desc_en) || '';
+                return `
+                <div class="featured-slide w-full shrink-0">
+                    <div class="h-48 w-full relative" style="background-image: url('${item.img}'); background-size: cover; background-position: center;">
+                        <div class="absolute inset-0 bg-gradient-to-t from-primary/80 dark:from-slate-900/90 to-transparent"></div>
+                        <button class="absolute bottom-4 rtl:left-4 ltr:right-4 w-12 h-12 bg-white rounded-full flex items-center justify-center text-primary shadow-lg hover:scale-105 transition-transform duration-200">
+                            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+                        </button>
+                    </div>
+                    <div class="p-4 bg-surface-container-lowest dark:bg-slate-800 text-start" dir="${lang === 'ar' ? 'rtl' : 'ltr'}">
+                        <h3 class="font-headline-md text-lg font-bold text-primary dark:text-emerald-400 mb-1">${name}</h3>
+                        <p class="font-body-md text-sm text-on-surface-variant dark:text-slate-300 line-clamp-2">${desc}</p>
+                    </div>
+                </div>`;
+            }).join('');
+
+            dots.innerHTML = list.length > 1 ? list.map((_, i) => `<span class="w-1.5 h-1.5 rounded-full transition-colors ${i === 0 ? 'bg-white' : 'bg-white/40'}"></span>`).join('') : '';
+
+            featuredCarouselIndex = 0;
+            showFeaturedSlide(0);
+
+            clearInterval(featuredCarouselTimer);
+            if (list.length > 1) {
+                featuredCarouselTimer = setInterval(() => {
+                    featuredCarouselIndex = (featuredCarouselIndex + 1) % list.length;
+                    showFeaturedSlide(featuredCarouselIndex);
+                }, 4500);
+            }
+        }
+
+        function showFeaturedSlide(idx) {
+            const track = document.getElementById('featured-carousel-track');
+            track.style.transform = `translateX(-${idx * 100}%)`;
+            document.querySelectorAll('#featured-carousel-dots span').forEach((el, i) => {
+                el.classList.toggle('bg-white', i === idx);
+                el.classList.toggle('bg-white/40', i !== idx);
+            });
+        }
+
+        async function fetchReciters() {
+            const container = document.getElementById('reciters-container');
+            container.innerHTML = renderLoadingState(i18n[document.documentElement.getAttribute('lang') || 'ar'].loading);
+            try {
+                const response = await fetch('all_reciters.json');
+                if (!response.ok) throw new Error('HTTP ' + response.status);
+                allReciters = await response.json();
+                renderRecitersList();
+            } catch (error) {
+                console.error("Error fetching reciters:", error);
+                container.innerHTML = renderErrorState('حدث خطأ في تحميل قائمة القرّاء. تأكد من اتصالك بالإنترنت.', 'fetchReciters()');
+            }
+        }
+
+        function renderLoadingState(message) {
+            return `
+                <div class="flex flex-col items-center justify-center py-14 gap-3">
+                    <span class="w-8 h-8 border-[3px] border-outline-variant dark:border-slate-600 border-t-primary dark:border-t-emerald-400 rounded-full animate-spin"></span>
+                    <p class="text-sm text-on-surface-variant dark:text-slate-400">${message}</p>
+                </div>`;
+        }
+
+        function renderErrorState(message, retryCall) {
+            return `
+                <div class="flex flex-col items-center justify-center py-14 gap-3 text-center px-6">
+                    <span class="material-symbols-outlined text-4xl text-red-400 dark:text-red-400">error</span>
+                    <p class="text-sm text-on-surface-variant dark:text-slate-400">${message}</p>
+                    <button onclick="${retryCall}" class="mt-1 flex items-center gap-1.5 px-5 py-2 bg-primary dark:bg-emerald-500 text-white dark:text-slate-900 rounded-full text-sm font-bold hover:opacity-90 active:scale-95 transition">
+                        <span class="material-symbols-outlined text-base">refresh</span>
+                        إعادة المحاولة
+                    </button>
+                </div>`;
+        }
+
+        function renderRecitersList() {
+            const container = document.getElementById('reciters-container');
+            const lang = document.documentElement.getAttribute('lang') || 'ar';
+            container.innerHTML = '';
+
+            if (allReciters.length === 0) {
+                 container.innerHTML = '<p class="text-center text-gray-500 py-10" data-i18n="loading">' + i18n[lang].loading + '</p>';
+                 return;
+            }
+
+            allReciters.forEach(reciter => {
+                if(reciter.id === "mishary") return; 
+
+                const name = lang === 'ar' ? reciter.name_ar : reciter.name_en;
+                const type = lang === 'ar' ? reciter.type_ar : reciter.type_en;
+                const isFav = favorites.some(f => f.id === reciter.id);
+
+                container.innerHTML += `
+                    <div class="reader-frame bg-surface-container-lowest dark:bg-slate-800 rounded-xl p-3 flex items-center justify-between shadow-sm border border-surface-container-high/50 dark:border-slate-700 cursor-pointer hover:bg-surface-container dark:hover:bg-slate-700 transition-colors" data-reciter-id="${reciter.id}" onclick="openReciterProfile('${reciter.json_file}')">
+                        <div class="flex items-center gap-4">
+                            <div class="w-14 h-14 rounded-full overflow-hidden shrink-0 bg-cover bg-center shadow-sm border border-outline-variant/20 dark:border-slate-600" style="background-image: url('${reciter.image}')"></div>
+                            <div class="text-start">
+                                <h4 class="font-headline-md text-base font-bold text-on-surface dark:text-white">${name}</h4>
+                                <p class="text-xs text-on-surface-variant dark:text-slate-400">${type}</p>
+                            </div>
+                        </div>
+                        <button class="text-on-surface-variant dark:text-slate-400 hover:text-primary dark:hover:text-emerald-400 transition-colors p-2" onclick="event.stopPropagation(); toggleFav('${reciter.id}', this)">
+                            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' ${isFav ? 1 : 0};">${isFav ? 'favorite' : 'favorite_border'}</span>
+                        </button>
+                    </div>
+                `;
+            });
+            refreshActiveFrames();
+        }
+
+        const reciterDataCache = new Map();
+
+        async function openReciterProfile(jsonFile, opts = {}) {
+            if (opts.navigate !== false) showScreen('screen-profile');
+            const container = document.getElementById('surahs-container');
+
+            let reciterInfo = allReciters.find(r => r.json_file === jsonFile);
+            if (!reciterInfo && globalSettings.feat_json === jsonFile) {
+                reciterInfo = { id: 'featured', name_ar: globalSettings.feat_name_ar, name_en: globalSettings.feat_name_en, image: globalSettings.feat_img, json_file: jsonFile };
+            }
+
+            // روايات القارئ (حفص، ورش، ...) إن وُجدت من لوحة التحكم
+            // نضيف الرواية الأساسية (ملف JSON الافتراضي) تلقائياً كأول خيار، باسم يؤخذ من حقل "الوصف" في لوحة التحكم، ثم أي روايات إضافية أضافها المشرف
+            const extraRiwayat = (reciterInfo && Array.isArray(reciterInfo.riwayat) && reciterInfo.riwayat.length > 0) ? reciterInfo.riwayat : null;
+            const mainRiwayaNameAr = (reciterInfo && reciterInfo.desc_ar) ? reciterInfo.desc_ar : 'الرواية الأساسية';
+            const mainRiwayaNameEn = (reciterInfo && reciterInfo.desc_en) ? reciterInfo.desc_en : 'Main Riwaya';
+            const riwayat = extraRiwayat ? [{ name_ar: mainRiwayaNameAr, name_en: mainRiwayaNameEn, json_file: jsonFile }, ...extraRiwayat] : null;
+            let activeRiwayaIndex = riwayat ? 0 : null;
+            let surahsFile = jsonFile;
+
+            // إذا كان هذا هو نفس القارئ الذي يتم تشغيله فعلياً حالياً، نفتح على نفس الرواية التي يقرأها
+            // بدلاً من الرجوع دائماً للرواية الأولى
+            if (riwayat && reciterInfo && reciterInfo.id === activeReciterId) {
+                const matchedRiwaya = riwayat[activePlayingRiwayaIndex];
+                if (matchedRiwaya) {
+                    activeRiwayaIndex = activePlayingRiwayaIndex;
+                    surahsFile = matchedRiwaya.json_file;
+                }
+            }
+
+            // نعرض بيانات القارئ (الصورة والاسم) فوراً حتى لا تظهر بيانات القارئ السابق أثناء تحميل قائمة سوره
+            currentReciter = { ...reciterInfo, riwayat, activeRiwayaIndex, surahs: [], mainJsonFile: jsonFile };
+            if (opts.navigate !== false) renderProfileHeader();
+
+            // إن كانت السور محملة مسبقاً في الذاكرة، نعرضها فوراً دون طلب الشبكة
+            if (reciterDataCache.has(surahsFile)) {
+                currentReciter = { ...reciterInfo, riwayat, activeRiwayaIndex, surahs: reciterDataCache.get(surahsFile), mainJsonFile: jsonFile };
+                renderProfile();
+                refreshActiveFrames();
+                return;
+            }
+
+            if (opts.navigate !== false) container.innerHTML = renderLoadingState(i18n[document.documentElement.lang].loading);
+            
+            // إضافة تأخير زمني بسيط جداً (20 جزء من الثانية) للسماح للمتصفح بالانتقال للصفحة فوراً قبل جلب البيانات
+            setTimeout(async () => {
+                try {
+                    const response = await fetch(surahsFile);
+                    if (!response.ok) throw new Error('HTTP ' + response.status);
+                    let data = await response.json();
+                    
+                    const surahsArray = Array.isArray(data) ? data : data.surahs;
+                    reciterDataCache.set(surahsFile, surahsArray);
+                    currentReciter = { ...reciterInfo, riwayat, activeRiwayaIndex, surahs: surahsArray, mainJsonFile: jsonFile };
+                    renderProfile();
+                    refreshActiveFrames();
+                } catch (error) {
+                    if (opts.navigate !== false) container.innerHTML = renderErrorState('حدث خطأ في تحميل السور. تأكد من اتصالك بالإنترنت.', `openReciterProfile('${jsonFile}')`);
+                }
+            }, 20);
+        }
+
+        function renderProfileHeader() {
+            const lang = document.documentElement.getAttribute('lang') || 'ar';
+            const header = document.getElementById('profile-header');
+            if (!header || !currentReciter) return;
+
+            const name = lang === 'ar' ? currentReciter.name_ar : currentReciter.name_en;
+            const isFav = favorites.some(f => f.id === currentReciter.id);
+
+            header.innerHTML = `
+                <div class="relative w-24 h-24 rounded-full overflow-hidden mb-2 shadow-sm border-2 border-surface-container dark:border-slate-700">
+                    <img class="w-full h-full object-cover" src="${currentReciter.image || 'https://via.placeholder.com/150'}" loading="lazy"/>
+                </div>
+                <h2 class="font-headline-md text-2xl font-bold text-primary dark:text-emerald-400 text-center rw-name">${name || 'القارئ'}</h2>
+
+                <div class="rw-actions-row">
+                    ${renderRiwayaSelector()}
+
+                    <button onclick="toggleFav('${currentReciter.id}', this)" class="rw-pill rw-fav-pill">
+                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' ${isFav ? 1 : 0};">favorite</span> 
+                        <span>${i18n[lang].add_fav}</span>
+                    </button>
+                </div>
+            `;
+        }
+
+        function renderProfile() {
+            const lang = document.documentElement.getAttribute('lang') || 'ar';
+            const container = document.getElementById('surahs-container');
+
+            renderProfileHeader();
+
+            container.innerHTML = `
+                <div class="relative mb-2">
+                    <span class="material-symbols-outlined absolute rtl:right-4 ltr:left-4 top-1/2 -translate-y-1/2 text-tertiary dark:text-slate-400">search</span>
+                    <input id="search-input" class="w-full ltr:pl-12 rtl:pr-12 rtl:pl-4 ltr:pr-4 py-3 bg-surface-container-lowest dark:bg-slate-800 border border-outline-variant dark:border-slate-700 rounded-full focus:outline-none focus:ring-2 focus:ring-primary/20 dark:focus:ring-emerald-400/40 text-sm text-on-surface dark:text-white transition-all shadow-sm" placeholder="${i18n[lang].search_surah}" type="text" oninput="filterSurahs(this.value)"/>
+                </div>
+                <div id="surahs-list" class="flex flex-col gap-4"></div>
+            `;
+            
+            renderSurahsList(currentReciter.surahs);
+        }
+
+        // ==================== زر اختيار الرواية (حفص / ورش ...) ====================
+        function renderRiwayaSelector() {
+            if (!currentReciter || !currentReciter.riwayat || currentReciter.riwayat.length === 0) return '';
+            const lang = document.documentElement.getAttribute('lang') || 'ar';
+            const riwayat = currentReciter.riwayat;
+            const activeIdx = currentReciter.activeRiwayaIndex || 0;
+            const active = riwayat[activeIdx] || riwayat[0];
+            const activeName = (lang === 'ar' ? active.name_ar : active.name_en) || active.name_ar || active.name_en || '';
+
+            return `
+                <div class="rw-select-wrap">
+                    <button id="riwaya-selector-btn" onclick="toggleRiwayaMenu(event)" class="rw-pill rw-select-btn">
+                        <span class="material-symbols-outlined">import_contacts</span>
+                        <span id="riwaya-selector-label">${activeName}</span>
+                        <span class="material-symbols-outlined">expand_more</span>
+                    </button>
+                    <div id="riwaya-menu" class="rw-menu hidden"></div>
+                </div>
+            `;
+        }
+
+        function renderRiwayaMenuItems() {
+            const menu = document.getElementById('riwaya-menu');
+            if (!menu || !currentReciter || !currentReciter.riwayat) return;
+            const lang = document.documentElement.getAttribute('lang') || 'ar';
+            const activeIdx = currentReciter.activeRiwayaIndex || 0;
+
+            menu.innerHTML = currentReciter.riwayat.map((r, idx) => {
+                const name = (lang === 'ar' ? r.name_ar : r.name_en) || r.name_ar || r.name_en || '-';
+                const isActive = idx === activeIdx;
+                return `
+                    <button onclick="selectRiwaya(${idx})" class="rw-menu-item${isActive ? ' rw-active' : ''}">
+                        <span>${name}</span>
+                        ${isActive ? '<span class="material-symbols-outlined">check</span>' : ''}
+                    </button>
+                `;
+            }).join('');
+        }
+
+        function closeRiwayaMenuOnOutsideClick(e) {
+            const menu = document.getElementById('riwaya-menu');
+            const btn = document.getElementById('riwaya-selector-btn');
+            if (!menu || menu.classList.contains('hidden')) return;
+            if (menu.contains(e.target) || (btn && btn.contains(e.target))) return;
+            menu.classList.add('hidden');
+        }
+        document.addEventListener('click', closeRiwayaMenuOnOutsideClick);
+
+        function toggleRiwayaMenu(e) {
+            if (e) e.stopPropagation();
+            const menu = document.getElementById('riwaya-menu');
+            if (!menu) return;
+            const willShow = menu.classList.contains('hidden');
+            if (willShow) renderRiwayaMenuItems();
+            menu.classList.toggle('hidden', !willShow);
+        }
+
+        async function selectRiwaya(idx) {
+            const menu = document.getElementById('riwaya-menu');
+            if (menu) menu.classList.add('hidden');
+            if (!currentReciter || !currentReciter.riwayat || idx === currentReciter.activeRiwayaIndex) return;
+
+            const riwaya = currentReciter.riwayat[idx];
+            const jsonFile = riwaya.json_file;
+            const surahsList = document.getElementById('surahs-list');
+
+            if (reciterDataCache.has(jsonFile)) {
+                currentReciter.surahs = reciterDataCache.get(jsonFile);
+                currentReciter.activeRiwayaIndex = idx;
+                renderProfile();
+                refreshActiveFrames();
+                return;
+            }
+
+            if (surahsList) surahsList.innerHTML = renderLoadingState(i18n[document.documentElement.lang].loading);
+
+            try {
+                const response = await fetch(jsonFile);
+                if (!response.ok) throw new Error('HTTP ' + response.status);
+                let data = await response.json();
+                const surahsArray = Array.isArray(data) ? data : data.surahs;
+                reciterDataCache.set(jsonFile, surahsArray);
+                currentReciter.surahs = surahsArray;
+                currentReciter.activeRiwayaIndex = idx;
+                renderProfile();
+                refreshActiveFrames();
+            } catch (error) {
+                const container = document.getElementById('surahs-container');
+                if (container) container.innerHTML = renderErrorState('حدث خطأ في تحميل سور هذه الرواية. تأكد من اتصالك بالإنترنت.', `selectRiwaya(${idx})`);
+            }
+        }
+
+        function filterSurahs(query) {
+            if(!currentReciter || !currentReciter.surahs) return;
+            const q = query.toLowerCase();
+            const filtered = currentReciter.surahs.filter(s => {
+                const n_ar = s.name || s.name_ar || "";
+                const n_en = s.name_en || "";
+                return n_ar.toLowerCase().includes(q) || n_en.toLowerCase().includes(q);
+            });
+            renderSurahsList(filtered);
+        }
+
+        function renderSurahsList(surahs) {
+            const lang = document.documentElement.getAttribute('lang') || 'ar';
+            const surahsList = document.getElementById('surahs-list');
+            surahsList.innerHTML = '';
+            
+            const reciterName = lang === 'ar' ? currentReciter.name_ar : currentReciter.name_en;
+
+            surahs.forEach(surah => {
+                const surahName = (lang === 'ar' ? (surah.name_ar || surah.name) : (surah.name_en || surah.name)) || 'السورة';
+                const audioUrl = surah.audio_url || surah.url || '#';
+                
+                const ayahs = surah.ayahs ? `<span>${surah.ayahs} ${i18n[lang].ayahs}</span> <span class="w-1 h-1 rounded-full bg-outline-variant dark:bg-slate-500"></span>` : '';
+                const type = lang === 'ar' ? (surah.type_ar || '') : (surah.type_en || '');
+                const detailsHtml = (ayahs || type) ? `<div class="flex items-center gap-1.5 text-xs text-on-surface-variant dark:text-slate-400 w-full px-2">${ayahs} <span>${type}</span></div>` : '';
+
+                const surahIdx = currentReciter.surahs.indexOf(surah);
+                surahsList.innerHTML += `
+                    <div class="reader-frame nav-player cursor-pointer flex items-center justify-between p-4 bg-surface-container-lowest dark:bg-slate-800 rounded-xl shadow-sm border border-surface-container dark:border-slate-700 hover:bg-surface-container dark:hover:bg-slate-700 transition-colors" data-surah-index="${surahIdx}" onclick="playSurahByIndex(${surahIdx})">
+                        <div class="flex items-center gap-3 sm:gap-4 flex-1">
+                            <span class="text-primary dark:text-emerald-400 w-6 text-center font-bold">${surah.id}</span>
+                            <span class="font-display-quran text-lg font-bold text-primary dark:text-white shrink-0">${surahName}</span>
+                            ${detailsHtml}
+                        </div>
+                        <button class="p-2 text-primary dark:text-emerald-400 shrink-0">
+                            <span class="material-symbols-outlined rtl:rotate-180">play_arrow</span>
+                        </button>
+                    </div>
+                `;
+            });
+            refreshActiveFrames();
+        }
+
+        // ================= Audio Player Logic =================
+        const audio = document.getElementById('audio-player');
+        const playPauseBtn = document.getElementById('play-pause-btn');
+        const bufferSpinner = document.getElementById('buffer-spinner');
+        const progressTrack = document.getElementById('progress-track');
+        const progressBar = document.getElementById('progress-bar');
+        const progressThumb = document.getElementById('progress-thumb');
+        const currentTimeEl = document.getElementById('current-time');
+        const totalTimeEl = document.getElementById('total-time');
+        let isDraggingSeek = false;
+
+        // عناصر المشغّل المصغّر
+        const miniPlayer = document.getElementById('mini-player');
+        const miniPlayerImg = document.getElementById('mini-player-img');
+        const miniPlayerSurah = document.getElementById('mini-player-surah');
+        const miniPlayerReciter = document.getElementById('mini-player-reciter');
+        const miniPlayPauseBtn = document.getElementById('mini-play-pause-btn');
+        const miniProgressBar = document.getElementById('mini-progress-bar');
+        let hasActiveTrack = false;
+        let currentTrackIndex = -1;
+        // هوية القارئ/السورة التي تُشغَّل فعلياً حالياً (مستقلة عن currentReciter الذي يتغيّر لمجرد فتح صفحة قارئ)
+        let activeReciterId = null;
+        let activeTrackIndex = -1;
+        // رقم الرواية النشطة حالياً لدى القارئ الذي يتم تشغيله فعلياً (وليس القارئ المفتوح على الشاشة فقط)
+        let activePlayingRiwayaIndex = 0;
+
+        // ==================== تكرار السورة الحالية / التشغيل التلقائي للتالية ====================
+        let repeatCurrent = false;
+        let autoPlayEnabled = true;
+        try { repeatCurrent = localStorage.getItem('wartel_repeat') === '1'; } catch (e) {}
+        try {
+            const savedAutoplay = localStorage.getItem('wartel_autoplay');
+            if (savedAutoplay !== null) autoPlayEnabled = savedAutoplay === '1';
+        } catch (e) {}
+
+        function updateRepeatUI() {
+            const btn = document.getElementById('repeat-btn');
+            const icon = document.getElementById('repeat-icon');
+            if (!btn || !icon) return;
+            icon.textContent = repeatCurrent ? 'repeat_one' : 'repeat';
+            icon.style.fontVariationSettings = `'FILL' ${repeatCurrent ? 1 : 0}`;
+            btn.classList.toggle('text-primary', repeatCurrent);
+            btn.classList.toggle('dark:text-emerald-400', repeatCurrent);
+            btn.classList.toggle('text-on-surface-variant', !repeatCurrent);
+            btn.classList.toggle('dark:text-slate-300', !repeatCurrent);
+        }
+
+        function updateAutoplayUI() {
+            const btn = document.getElementById('autoplay-btn');
+            const icon = document.getElementById('autoplay-icon');
+            if (!btn || !icon) return;
+            icon.style.fontVariationSettings = `'FILL' ${autoPlayEnabled ? 1 : 0}`;
+            btn.classList.toggle('text-primary', autoPlayEnabled);
+            btn.classList.toggle('dark:text-emerald-400', autoPlayEnabled);
+            btn.classList.toggle('text-on-surface-variant', !autoPlayEnabled);
+            btn.classList.toggle('dark:text-slate-300', !autoPlayEnabled);
+        }
+
+        function toggleRepeat() {
+            repeatCurrent = !repeatCurrent;
+            try { localStorage.setItem('wartel_repeat', repeatCurrent ? '1' : '0'); } catch (e) {}
+            updateRepeatUI();
+        }
+
+        function toggleAutoplay() {
+            autoPlayEnabled = !autoPlayEnabled;
+            try { localStorage.setItem('wartel_autoplay', autoPlayEnabled ? '1' : '0'); } catch (e) {}
+            updateAutoplayUI();
+        }
+
+        updateRepeatUI();
+        updateAutoplayUI();
+
+        function updateProgressUI(percent) {
+            const clamped = Math.min(100, Math.max(0, percent));
+            progressBar.style.width = clamped + '%';
+            progressThumb.style.insetInlineStart = clamped + '%';
+            miniProgressBar.style.width = clamped + '%';
+        }
+
+        function setPlayIcon(isPlaying) {
+            const icon = isPlaying ? 'pause' : 'play_arrow';
+            playPauseBtn.textContent = icon;
+            miniPlayPauseBtn.textContent = icon;
+        }
+
+        function updateMiniPlayerVisibility() {
+            const onPlayerScreen = !document.getElementById('screen-player').classList.contains('screen-hidden');
+            miniPlayer.classList.toggle('hidden', !hasActiveTrack || onPlayerScreen);
+        }
+
+        // ==================== إبراز إطار القارئ/السورة النشطة ====================
+        function isReciterActive(id) {
+            return !!(hasActiveTrack && activeReciterId && id && activeReciterId === id);
+        }
+        function isSurahActive(idx) {
+            // يجب أن تكون قائمة السور المعروضة هي نفسها لقائمة القارئ الذي يشغَّل فعلياً
+            return !!(hasActiveTrack && currentReciter && activeReciterId === currentReciter.id && activeTrackIndex === idx);
+        }
+        function refreshActiveFrames() {
+            document.querySelectorAll('.reader-frame[data-reciter-id]').forEach(el => {
+                el.classList.toggle('reader-active', isReciterActive(el.getAttribute('data-reciter-id')));
+            });
+            document.querySelectorAll('.reader-frame[data-surah-index]').forEach(el => {
+                el.classList.toggle('reader-active', isSurahActive(parseInt(el.getAttribute('data-surah-index'), 10)));
+            });
+        }
+
+        function playAudio(url, surahName, reciterName, image, opts = {}) {
+            hifzMode = null;
+            updateHifzBadge();
+            document.getElementById('player-surah').textContent = surahName;
+            document.getElementById('player-reciter').textContent = reciterName;
+            document.getElementById('player-img').src = image || 'https://via.placeholder.com/150';
+            miniPlayerImg.src = image || 'https://via.placeholder.com/150';
+            miniPlayerSurah.textContent = surahName;
+            miniPlayerReciter.textContent = reciterName;
+            updateProgressUI(0);
+            currentTimeEl.textContent = '0:00';
+            totalTimeEl.textContent = '--:--';
+
+            audio.src = url;
+
+            const resumeTime = opts.resumeTime || 0;
+            if (resumeTime > 0) {
+                const onMeta = () => {
+                    audio.currentTime = resumeTime;
+                    audio.removeEventListener('loadedmetadata', onMeta);
+                };
+                audio.addEventListener('loadedmetadata', onMeta);
+            }
+
+            if (opts.autoplay === false) {
+                setPlayIcon(false);
+            } else {
+                audio.play();
+                setPlayIcon(true);
+            }
+            hasActiveTrack = true;
+            if (opts.navigate !== false) showScreen('screen-player');
+            updateMiniPlayerVisibility();
+            refreshActiveFrames();
+            saveLastPlayedState();
+        }
+
+        // تشغيل سورة من قائمة القارئ الحالي حسب موضعها، لدعم التالي/السابق
+        function playSurahByIndex(idx, opts = {}) {
+            if (!currentReciter || !currentReciter.surahs || idx < 0 || idx >= currentReciter.surahs.length) return;
+            currentTrackIndex = idx;
+            activeReciterId = currentReciter.id;
+            activeTrackIndex = idx;
+            activePlayingRiwayaIndex = currentReciter.activeRiwayaIndex || 0;
+            const surah = currentReciter.surahs[idx];
+            const lang = document.documentElement.getAttribute('lang') || 'ar';
+            const surahName = (lang === 'ar' ? (surah.name_ar || surah.name) : (surah.name_en || surah.name)) || 'السورة';
+            const audioUrl = surah.audio_url || surah.url || '#';
+            const reciterName = lang === 'ar' ? currentReciter.name_ar : currentReciter.name_en;
+            playAudio(audioUrl, surahName, reciterName, currentReciter.image, opts);
+        }
+
+        // ==================== استئناف آخر سورة تم الاستماع إليها ====================
+        const LAST_PLAYED_KEY = 'wartel_last_played';
+
+        function saveLastPlayedState() {
+            if (!currentReciter || currentTrackIndex < 0) return;
+            try {
+                localStorage.setItem(LAST_PLAYED_KEY, JSON.stringify({
+                    reciterJsonFile: currentReciter.mainJsonFile || currentReciter.json_file,
+                    riwayaIndex: currentReciter.activeRiwayaIndex || 0,
+                    surahIndex: currentTrackIndex,
+                    currentTime: audio.currentTime || 0
+                }));
+            } catch (e) {}
+        }
+
+        async function restoreLastPlayedState() {
+            let saved = null;
+            try { saved = JSON.parse(localStorage.getItem(LAST_PLAYED_KEY)); } catch (e) { saved = null; }
+            if (!saved || !saved.reciterJsonFile) return;
+
+            try {
+                await openReciterProfile(saved.reciterJsonFile, { navigate: false });
+                if (!currentReciter) return;
+
+                if (saved.riwayaIndex && currentReciter.riwayat && saved.riwayaIndex !== currentReciter.activeRiwayaIndex) {
+                    await selectRiwaya(saved.riwayaIndex);
+                }
+
+                if (currentReciter.surahs && currentReciter.surahs[saved.surahIndex]) {
+                    playSurahByIndex(saved.surahIndex, { autoplay: false, navigate: false, resumeTime: saved.currentTime || 0 });
+                }
+            } catch (e) {
+                console.log('تعذر استعادة آخر تشغيل', e);
+            }
+        }
+
+        // ==================== مؤقت النوم ====================
+        let sleepTimerHandle = null;
+        let sleepAtEndOfSurah = false;
+
+        function togglePlayerMenu(show) { document.getElementById('player-menu-modal').classList.toggle('hidden', !show); }
+
+        function toggleSleepModal(show) {
+            document.getElementById('sleep-timer-modal').classList.toggle('hidden', !show);
+            if (show) togglePlayerMenu(false);
+        }
+
+        function updateSleepBadge(text) {
+            const badge = document.getElementById('sleep-badge');
+            if (text) {
+                badge.classList.remove('hidden');
+                badge.querySelector('span').textContent = '🌙 ' + text;
+            } else {
+                badge.classList.add('hidden');
+            }
+        }
+
+        function setSleepTimer(option) {
+            clearTimeout(sleepTimerHandle);
+            sleepAtEndOfSurah = false;
+            if (option === 'off') { updateSleepBadge(null); toggleSleepModal(false); return; }
+            if (option === 'end') { sleepAtEndOfSurah = true; updateSleepBadge('حتى نهاية السورة'); toggleSleepModal(false); return; }
+            const minutes = parseInt(option);
+            sleepTimerHandle = setTimeout(() => {
+                audio.pause();
+                setPlayIcon(false);
+                updateSleepBadge(null);
+            }, minutes * 60000);
+            updateSleepBadge(minutes + ' دقيقة');
+            toggleSleepModal(false);
+        }
+
+        // ==================== وضع الحفظ (تكرار مقطع) ====================
+        let hifzMode = null;
+        let hifzStartSeconds = 0;
+        let hifzEndSeconds = 0;
+
+        function toggleHifzModal(show) {
+            document.getElementById('hifz-modal').classList.toggle('hidden', !show);
+            if (show) togglePlayerMenu(false);
+        }
+
+        function setHifzStart() {
+            hifzStartSeconds = audio.currentTime;
+            document.getElementById('hifz-start-input').value = formatTime(hifzStartSeconds);
+        }
+
+        function setHifzEnd() {
+            hifzEndSeconds = audio.currentTime;
+            document.getElementById('hifz-end-input').value = formatTime(hifzEndSeconds);
+        }
+
+        function updateHifzBadge() {
+            const badge = document.getElementById('hifz-badge');
+            if (hifzMode) {
+                badge.classList.remove('hidden');
+                badge.querySelector('span').textContent = `الحفظ: تكرار ${hifzMode.currentRep + 1}/${hifzMode.totalReps}`;
+            } else {
+                badge.classList.add('hidden');
+            }
+        }
+
+        function startHifzMode() {
+            const reps = parseInt(document.getElementById('hifz-reps-input').value) || 5;
+            if (hifzEndSeconds <= hifzStartSeconds) { alert('حدد نقطة نهاية بعد نقطة البداية أولاً (استمع للمقطع ثم اضغط تعيين البداية/النهاية).'); return; }
+            hifzMode = { start: hifzStartSeconds, end: hifzEndSeconds, totalReps: reps, currentRep: 0 };
+            audio.currentTime = hifzMode.start;
+            audio.play();
+            setPlayIcon(true);
+            updateHifzBadge();
+            toggleHifzModal(false);
+        }
+
+        function stopHifzMode() {
+            hifzMode = null;
+            updateHifzBadge();
+        }
+
+        function playNext() {
+            if (currentTrackIndex === -1 || !currentReciter) return;
+            playSurahByIndex(currentTrackIndex + 1);
+        }
+
+        function playPrev() {
+            if (currentTrackIndex === -1 || !currentReciter) return;
+            playSurahByIndex(currentTrackIndex - 1);
+        }
+
+        function togglePlay() {
+            if (audio.paused) { audio.play(); setPlayIcon(true); } 
+            else { audio.pause(); setPlayIcon(false); }
+        }
+
+        let lastSaveTime = 0;
+        audio.addEventListener('timeupdate', () => {
+            if(audio.duration && !isDraggingSeek) {
+                const progress = (audio.currentTime / audio.duration) * 100;
+                updateProgressUI(progress);
+                currentTimeEl.textContent = formatTime(audio.currentTime);
+            }
+            if (hifzMode && audio.currentTime >= hifzMode.end) {
+                hifzMode.currentRep++;
+                if (hifzMode.currentRep >= hifzMode.totalReps) {
+                    stopHifzMode();
+                } else {
+                    audio.currentTime = hifzMode.start;
+                    updateHifzBadge();
+                }
+            }
+            // حفظ دوري لموضع التشغيل (كل 5 ثوانٍ تقريباً) لاستئنافه لاحقاً
+            if (audio.currentTime - lastSaveTime > 5) {
+                lastSaveTime = audio.currentTime;
+                saveLastPlayedState();
+            }
+        });
+
+        audio.addEventListener('pause', saveLastPlayedState);
+
+        audio.addEventListener('loadedmetadata', () => { totalTimeEl.textContent = formatTime(audio.duration); });
+        audio.addEventListener('ended', () => {
+            if (sleepAtEndOfSurah) {
+                sleepAtEndOfSurah = false;
+                updateSleepBadge(null);
+                setPlayIcon(false);
+                updateProgressUI(0);
+                currentTimeEl.textContent = '0:00';
+                return;
+            }
+            // تكرار السورة الحالية إن كان مفعّلاً
+            if (repeatCurrent) {
+                audio.currentTime = 0;
+                audio.play();
+                return;
+            }
+            // الانتقال التلقائي للسورة التالية إن وُجدت وكان التشغيل التلقائي مفعّلاً
+            if (autoPlayEnabled && currentReciter && currentReciter.surahs && currentTrackIndex + 1 < currentReciter.surahs.length) {
+                playNext();
+            } else {
+                setPlayIcon(false);
+                updateProgressUI(0);
+                currentTimeEl.textContent = '0:00';
+            }
+        });
+        window.addEventListener('beforeunload', saveLastPlayedState);
+        audio.addEventListener('waiting', () => { bufferSpinner.classList.remove('hidden'); playPauseBtn.classList.add('opacity-0'); });
+        audio.addEventListener('playing', () => { bufferSpinner.classList.add('hidden'); playPauseBtn.classList.remove('opacity-0'); });
+        audio.addEventListener('canplay', () => { bufferSpinner.classList.add('hidden'); playPauseBtn.classList.remove('opacity-0'); });
+
+        const progressContainer = document.getElementById('progress-container');
+
+        function ratioFromPointer(clientX) {
+            const rect = progressTrack.getBoundingClientRect();
+            let ratio = (clientX - rect.left) / rect.width;
+            if (document.documentElement.dir === 'rtl') ratio = 1 - ratio;
+            return Math.min(1, Math.max(0, ratio));
+        }
+
+        progressContainer.addEventListener('pointerdown', (e) => {
+            if (!audio.duration) return;
+            isDraggingSeek = true;
+            progressContainer.setPointerCapture(e.pointerId);
+            progressContainer.classList.add('dragging'); // إيقاف التحريك السلس أثناء السحب لتجنب التأخير
+            const ratio = ratioFromPointer(e.clientX);
+            updateProgressUI(ratio * 100);
+        });
+
+        progressContainer.addEventListener('pointermove', (e) => {
+            if (!isDraggingSeek) return;
+            const ratio = ratioFromPointer(e.clientX);
+            updateProgressUI(ratio * 100);
+            currentTimeEl.textContent = formatTime(ratio * (audio.duration || 0));
+        });
+
+        function endDrag(e) {
+            if (!isDraggingSeek) return;
+            isDraggingSeek = false;
+            progressContainer.releasePointerCapture(e.pointerId);
+            progressContainer.classList.remove('dragging'); // إعادة التحريك السلس
+            const ratio = ratioFromPointer(e.clientX);
+            if (audio.duration) {
+                audio.currentTime = ratio * audio.duration;
+            }
+        }
+
+        progressContainer.addEventListener('pointerup', endDrag);
+        progressContainer.addEventListener('pointercancel', (e) => { 
+            isDraggingSeek = false; 
+            progressContainer.classList.remove('dragging');
+            progressContainer.releasePointerCapture(e.pointerId);
+        });
+
+        function formatTime(seconds) {
+            const min = Math.floor(seconds / 60); const sec = Math.floor(seconds % 60);
+            return `${min}:${sec < 10 ? '0' : ''}${sec}`;
+        }
+        // ======================================================
+
+        function toggleFav(id, btn) {
+            const index = favorites.findIndex(f => f.id === id);
+            const icon = btn.querySelector('.material-symbols-outlined');
+            if (index === -1) {
+                const reciter = allReciters.find(r => r.id === id) || {id: id, name_ar: currentReciter.name_ar, name_en: currentReciter.name_en, image: currentReciter.image, json_file: `${id}.json`};
+                favorites.push(reciter);
+                icon.style.fontVariationSettings = "'FILL' 1";
+                if(icon.textContent === 'favorite_border') icon.textContent = 'favorite';
+            } else {
+                favorites.splice(index, 1);
+                icon.style.fontVariationSettings = "'FILL' 0";
+                if(icon.textContent === 'favorite') icon.textContent = 'favorite_border';
+            }
+            saveFavorites();
+            renderFavs();
+        }
+
+        function renderFavs() {
+            const container = document.getElementById('favorites-container');
+            const lang = document.documentElement.lang || 'ar';
+            if (favorites.length === 0) {
+                container.innerHTML = `<div class="mt-20 text-center"><span class="material-symbols-outlined text-6xl text-gray-400 mb-4">bookmark_border</span><p class="text-gray-500">${i18n[lang].no_favorites}</p></div>`;
+            } else {
+                container.innerHTML = '<div class="w-full space-y-4"></div>';
+                const list = container.querySelector('div');
+                favorites.forEach(fav => {
+                    const name = lang === 'ar' ? fav.name_ar : fav.name_en;
+                    list.innerHTML += `
+                        <div class="bg-surface-container-lowest dark:bg-slate-800 rounded-xl p-3 flex items-center justify-between shadow-sm border border-surface-container-high/50 dark:border-slate-700 cursor-pointer" onclick="openReciterProfile('${fav.json_file}')">
+                            <div class="flex items-center gap-4">
+                                <div class="w-14 h-14 rounded-full bg-cover bg-center shrink-0 shadow-sm border border-outline-variant/20 dark:border-slate-600" style="background-image: url('${fav.image || 'https://via.placeholder.com/150'}')"></div>
+                                <h4 class="font-bold text-on-surface dark:text-white text-start">${name}</h4>
+                            </div>
+                            <button class="text-primary dark:text-emerald-400 p-2" onclick="event.stopPropagation(); toggleFav('${fav.id}', this)"><span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">favorite</span></button>
+                        </div>
+                    `;
+                });
+            }
+        }
+
+        function setLanguage(lang) {
+            const html = document.documentElement;
+            html.setAttribute('lang', lang);
+            html.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (i18n[lang][key]) el.textContent = i18n[lang][key];
+            });
+            document.querySelectorAll('[data-i18n-ph]').forEach(el => {
+                const key = el.getAttribute('data-i18n-ph');
+                if (i18n[lang][key]) el.setAttribute('placeholder', i18n[lang][key]);
+            });
+            
+            renderFeaturedReciter(lang);
+            renderRecitersList();
+            renderFavs();
+            if(currentReciter) renderProfile();
+            toggleLangModal(false);
+        }
+
+        function toggleLangModal(show) { document.getElementById('lang-modal').classList.toggle('hidden', !show); }
+        function toggleDarkMode() {
+            document.documentElement.classList.toggle('dark');
+            const isDark = document.documentElement.classList.contains('dark');
+            try { localStorage.setItem('wartel_theme', isDark ? 'dark' : 'light'); } catch (e) {}
+        }
+
+        function showScreen(screenId, push = true) {
+            ['screen-home', 'screen-profile', 'screen-player', 'screen-favorites', 'screen-settings'].forEach(id => {
+                document.getElementById(id).classList.add('screen-hidden');
+                if(id === 'screen-player') document.getElementById(id).classList.remove('flex');
+            });
+            document.getElementById(screenId).classList.remove('screen-hidden');
+            if(screenId === 'screen-player') document.getElementById(screenId).classList.add('flex');
+            window.scrollTo(0, 0);
+            document.getElementById(screenId).scrollTop = 0;
+            
+            document.querySelectorAll('#bottom-nav button').forEach(btn => {
+                btn.classList.replace('text-on-secondary-container', 'text-on-surface-variant');
+                btn.classList.replace('dark:text-emerald-400', 'dark:text-slate-400');
+                btn.classList.remove('bg-secondary-container', 'dark:bg-emerald-400/20', 'rounded-2xl', 'shadow-sm');
+                btn.querySelector('span').style.fontVariationSettings = "'FILL' 0";
+            });
+            
+            let btnId = screenId.replace('screen-', 'nav-btn-');
+            if(screenId === 'screen-profile') btnId = 'nav-btn-home';
+            const activeBtn = document.getElementById(btnId);
+            if(activeBtn) {
+                activeBtn.classList.replace('text-on-surface-variant', 'text-on-secondary-container');
+                activeBtn.classList.replace('dark:text-slate-400', 'dark:text-emerald-400');
+                activeBtn.classList.add('bg-secondary-container', 'dark:bg-emerald-400/20', 'rounded-2xl', 'shadow-sm');
+                activeBtn.querySelector('span').style.fontVariationSettings = "'FILL' 1";
+            }
+            if (push) history.pushState({ screen: screenId }, "", "#" + screenId.replace('screen-', ''));
+            updateMiniPlayerVisibility();
+        }
+
+        window.addEventListener('popstate', (e) => {
+            if (e.state && e.state.screen) showScreen(e.state.screen, false);
+            else showScreen('screen-home', false);
+        });
+
+        document.querySelectorAll('.nav-home').forEach(btn => btn.addEventListener('click', () => showScreen('screen-home')));
+        document.querySelectorAll('.nav-favorites').forEach(btn => btn.addEventListener('click', () => showScreen('screen-favorites')));
+        document.querySelectorAll('.nav-settings').forEach(btn => btn.addEventListener('click', () => showScreen('screen-settings')));
+        document.querySelectorAll('.nav-player').forEach(btn => btn.addEventListener('click', () => showScreen('screen-player')));
+
+        fetchSettings().then(() => {
+            fetchReciters().then(() => {
+                // استعادة آخر سورة كان المستخدم يستمع إليها، مع الحفاظ على حالتها (دون تشغيل تلقائي)
+                restoreLastPlayedState();
+            });
+            history.replaceState({ screen: 'screen-home' }, "", "#home");
+            showScreen('screen-home', false);
+        });
+    </script>
+</body>
+</html>
